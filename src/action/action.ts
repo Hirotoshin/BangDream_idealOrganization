@@ -7,6 +7,7 @@ export interface IAddMember {
   pure: number;
   cool: number;
   belong: string;
+  id: number;
 }
 
 export type addAction = IAddMember;

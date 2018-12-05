@@ -6,11 +6,13 @@ export function addmember(
   powerful: number,
   pure: number,
   cool: number,
-  belong: string
+  belong: string,
+  id: number
 ): IAddMember {
   return {
     belong,
     cool,
+    id,
     name,
     powerful,
     pure,
