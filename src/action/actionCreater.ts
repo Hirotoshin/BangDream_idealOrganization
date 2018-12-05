@@ -1,4 +1,4 @@
-import { addAction, IAddMember } from "./action";
+import { IAddMember } from "./action";
 import { ActionType } from "./actionType";
 
 export function addmember(
