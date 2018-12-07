@@ -1,3 +1,5 @@
+import Card from "@material-ui/core/Card";
+// import CardContent from "@material-ui/core/CardContent";
 import * as React from "react";
 import * as ReactModal from "react-modal";
 import { connect } from "react-redux";
@@ -101,14 +103,16 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
     const memberListJSX = memberlist.map((item: IMemberState, i) => {
       return (
         <div key={i}>
-          member
-          <br />
-          name:{item.name}
-          <br /> Performance:{item.paformance}
-          <br />
-          Technique:{item.technique}
-          <br />
-          Visual:{item.visual}
+          <Card>
+            member
+            <br />
+            name:{item.name}
+            <br /> Performance:{item.paformance}
+            <br />
+            Technique:{item.technique}
+            <br />
+            Visual:{item.visual}
+          </Card>
         </div>
       );
     });
@@ -144,7 +148,7 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
         <h2>手持ちメンバー一覧</h2>
         <button>表示</button>
         <h3>testDebug</h3>
-        {memberListJSX}
+        {<Card>{memberListJSX}</Card>}
       </React.Fragment>
     );
   }
