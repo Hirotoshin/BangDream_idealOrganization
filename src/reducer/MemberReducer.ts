@@ -3,11 +3,11 @@ import { ActionType } from "../action/actionType";
 
 export interface IMemberState {
   name: string;
-  powerful: number;
-  pure: number;
-  cool: number;
+  paformance: number;
+  technique: number;
+  visual: number;
   belong: string;
-  id: number;
+  id: string;
 }
 const initialState: IMemberState[] = [];
 
@@ -20,11 +20,11 @@ function MemberReducer(
     case ActionType.ADDMEMBER:
       const memberState: IMemberState = {
         belong: action.belong,
-        cool: action.cool,
         id: action.id,
         name: action.name,
-        powerful: action.powerful,
-        pure: action.pure
+        paformance: action.paformance,
+        technique: action.technique,
+        visual: action.visual
       };
       afterState.push(memberState);
       return afterState;

@@ -3,19 +3,19 @@ import { ActionType } from "./actionType";
 
 export function addmember(
   name: string,
-  powerful: number,
-  pure: number,
-  cool: number,
+  paformance: number,
+  technique: number,
+  visual: number,
   belong: string,
-  id: number
+  id: string
 ): IAddMember {
   return {
     belong,
-    cool,
     id,
     name,
-    powerful,
-    pure,
-    type: ActionType.ADDMEMBER
+    paformance,
+    technique,
+    type: ActionType.ADDMEMBER,
+    visual
   };
 }

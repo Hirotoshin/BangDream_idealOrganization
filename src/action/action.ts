@@ -3,11 +3,11 @@ import { ActionType } from "./actionType";
 export interface IAddMember {
   type: ActionType.ADDMEMBER;
   name: string;
-  powerful: number;
-  pure: number;
-  cool: number;
+  paformance: number;
+  technique: number;
+  visual: number;
   belong: string;
-  id: number;
+  id: string;
 }
 
 export type addAction = IAddMember;
