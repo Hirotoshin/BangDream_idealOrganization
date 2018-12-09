@@ -34,16 +34,12 @@ class IdealParty extends React.Component<{}, IidealParty> {
           isOpen={this.state.modalBoolean}
           contentLabel="Minimal Modal Example"
         >
-          <h1>hoge</h1>
+          <h1>理想編成</h1>
+          <h2>タイプ</h2>
+          <h2>ピックアップメンバー</h2>
           <button onClick={this.modalClose}>close</button>
         </ReactModal>
       </React.Fragment>
-      // <ReactModal
-      //   isOpen={this.props.indealpartyonclick}
-      //   contentLabel="Minimal Modal Example"
-      // >
-      //   <h1>hogehoge</h1>
-      // </ReactModal>
     );
   }
 }
