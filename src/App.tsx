@@ -5,34 +5,17 @@ import * as ReactModal from "react-modal";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { addmember } from "./action/actionCreater";
+import IdealParty from "./component/idealParty";
+import { IMemberComponentState, IMemberProps } from "./Interface";
 import { IMemberState } from "./reducer/MemberReducer";
 
 ReactModal.setAppElement(document.getElementById("root") as HTMLElement);
 
-interface IMemberProps {
-  memberList: IMemberState[];
-  addtodo: (
-    name: string,
-    paformance: number,
-    technique: number,
-    visual: number,
-    belong: string,
-    id: string
-  ) => void;
-}
-interface IMemberComponentState {
-  inputText: string;
-  inputId: number;
-  modalboolean: boolean;
-  paformanceId: number;
-  techniqueId: number;
-  visualId: number;
-  isMemberDone: boolean;
-}
 class App extends React.Component<IMemberProps, IMemberComponentState> {
   constructor(props: IMemberProps) {
     super(props);
     this.state = {
+      idealpartymodal: false,
       inputId: 0,
       inputText: "",
       isMemberDone: false,
@@ -52,6 +35,7 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
     );
     this.handleInputVisualNumber = this.handleInputVisualNumber.bind(this);
     this.pushAllMember = this.pushAllMember.bind(this);
+    this.indealpartyonclick = this.indealpartyonclick.bind(this);
   }
   public handleOpenModal() {
     this.setState({
@@ -66,6 +50,11 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
   public pushAllMember() {
     this.setState({
       isMemberDone: !this.state.isMemberDone
+    });
+  }
+  public indealpartyonclick() {
+    this.setState({
+      idealpartymodal: !this.state.idealpartymodal
     });
   }
   public handleInputText(e: React.FormEvent<HTMLInputElement>): void {
@@ -160,6 +149,7 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
 
         <h3>testDebug</h3>
         {memberListJSX}
+        <IdealParty />
       </React.Fragment>
     );
   }
