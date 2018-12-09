@@ -27,6 +27,7 @@ interface IMemberComponentState {
   paformanceId: number;
   techniqueId: number;
   visualId: number;
+  isMemberDone: boolean;
 }
 class App extends React.Component<IMemberProps, IMemberComponentState> {
   constructor(props: IMemberProps) {
@@ -34,6 +35,7 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
     this.state = {
       inputId: 0,
       inputText: "",
+      isMemberDone: false,
       modalboolean: false,
       paformanceId: 0,
       techniqueId: 0,
@@ -49,6 +51,7 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
       this
     );
     this.handleInputVisualNumber = this.handleInputVisualNumber.bind(this);
+    this.pushAllMember = this.pushAllMember.bind(this);
   }
   public handleOpenModal() {
     this.setState({
@@ -60,11 +63,15 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
       modalboolean: false
     });
   }
+  public pushAllMember() {
+    this.setState({
+      isMemberDone: !this.state.isMemberDone
+    });
+  }
   public handleInputText(e: React.FormEvent<HTMLInputElement>): void {
     this.setState({
       inputText: e.currentTarget.value
     });
-    console.log(this.state.inputText);
   }
 
   public handleInputPerformanceNumber(
@@ -103,19 +110,22 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
     const memberListJSX = memberlist.map((item: IMemberState, i) => {
       return (
         <div key={i}>
-          <Card>
-            member
-            <br />
-            name:{item.name}
-            <br /> Performance:{item.paformance}
-            <br />
-            Technique:{item.technique}
-            <br />
-            Visual:{item.visual}
-          </Card>
+          {this.state.isMemberDone ? (
+            <Card>
+              member
+              <br />
+              name:{item.name}
+              <br /> Performance:{item.paformance}
+              <br />
+              Technique:{item.technique}
+              <br />
+              Visual:{item.visual}
+            </Card>
+          ) : null}
         </div>
       );
     });
+
     return (
       <React.Fragment>
         <h1>BangDream! 理想編成計算</h1>
@@ -146,9 +156,10 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
         <h2>編成条件</h2>
         <button>編成</button>
         <h2>手持ちメンバー一覧</h2>
-        <button>表示</button>
+        <button onClick={this.pushAllMember}>表示</button>
+
         <h3>testDebug</h3>
-        {<Card>{memberListJSX}</Card>}
+        {memberListJSX}
       </React.Fragment>
     );
   }
