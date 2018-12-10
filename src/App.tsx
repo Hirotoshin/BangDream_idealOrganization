@@ -27,10 +27,22 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
     };
 
     this.pushAllMember = this.pushAllMember.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
   public pushAllMember() {
     this.setState({
       isMemberDone: !this.state.isMemberDone
+    });
+  }
+  public handleOpenModal() {
+    this.setState({
+      modalboolean: true
+    });
+  }
+  public handleCloseModal() {
+    this.setState({
+      modalboolean: false
     });
   }
 
@@ -49,6 +61,11 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
               Technique:{item.technique}
               <br />
               Visual:{item.visual}
+              <button onClick={this.handleOpenModal}>編集</button>
+              <ReactModal isOpen={this.state.modalboolean}>
+                <h1>編集</h1>
+                <button onClick={this.handleCloseModal}>閉じる</button>
+              </ReactModal>
             </Card>
           ) : null}
         </div>
@@ -64,7 +81,7 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
         <IdealParty />
         <h2>手持ちメンバー一覧</h2>
         <button onClick={this.pushAllMember}>表示</button>
-        <h3>testDebug</h3>
+        <h3>以下、testDebug</h3>
         {memberListJSX}
       </React.Fragment>
     );

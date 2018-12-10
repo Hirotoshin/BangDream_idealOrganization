@@ -84,7 +84,7 @@ class MemberAdd extends React.Component<IMemberProps, IAddMemberModalState> {
     };
     return (
       <React.Fragment>
-        <button onClick={this.handleOpenModal}>tuika</button>
+        <button onClick={this.handleOpenModal}>追加</button>
         <ReactModal
           isOpen={this.state.modalBoolean}
           contentLabel="Minimal Modal Example"

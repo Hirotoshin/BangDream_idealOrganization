@@ -29,7 +29,7 @@ class IdealParty extends React.Component<{}, IidealParty> {
   public render() {
     return (
       <React.Fragment>
-        <button onClick={this.indealpartyonclick}> test </button>
+        <button onClick={this.indealpartyonclick}> 計算 </button>
         <ReactModal
           isOpen={this.state.modalBoolean}
           contentLabel="Minimal Modal Example"
