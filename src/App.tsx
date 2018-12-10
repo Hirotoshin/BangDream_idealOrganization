@@ -7,6 +7,7 @@ import { Dispatch } from "redux";
 import { addmember } from "./action/actionCreater";
 import IdealParty from "./component/idealParty";
 import MemberAdd from "./component/memberAdd";
+import UpdateMember from "./component/UpdateMember";
 import { IMemberComponentState, IMemberProps } from "./Interface";
 import { IMemberState } from "./reducer/MemberReducer";
 
@@ -61,11 +62,7 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
               Technique:{item.technique}
               <br />
               Visual:{item.visual}
-              <button onClick={this.handleOpenModal}>編集</button>
-              <ReactModal isOpen={this.state.modalboolean}>
-                <h1>編集</h1>
-                <button onClick={this.handleCloseModal}>閉じる</button>
-              </ReactModal>
+              <UpdateMember />
             </Card>
           ) : null}
         </div>
