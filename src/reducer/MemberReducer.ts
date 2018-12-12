@@ -38,7 +38,15 @@ function MemberReducer(
       afterState.push(memberState);
       return afterState;
     case ActionType.UPDATEMEMBER:
-      return afterState[action.id];
+      const updateMemberState: IMemberState = {
+        belong: action.updateArgsObj.belong,
+        id: action.updateArgsObj.id,
+        name: action.updateArgsObj.name,
+        paformance: action.updateArgsObj.paformance,
+        technique: action.updateArgsObj.technique,
+        visual: action.updateArgsObj.visual
+      };
+      return (afterState[action.updateArgsObj.id] = updateMemberState);
     default:
       return state;
   }

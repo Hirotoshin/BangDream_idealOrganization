@@ -2,11 +2,15 @@ import * as React from "react";
 import * as ReactModal from "react-modal";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { IupdateArgs } from "../action/action";
 import { updateMember } from "../action/actionCreater";
-import { addmember } from "../action/actionCreater";
 // import { IMemberProps } from "../Interface";
 import { IMemberState } from "../reducer/MemberReducer";
 
+interface IUpdateProps {
+  IupdateArgs: IupdateArgs;
+  updateMemberList: (updateArgsObj: IupdateArgs) => void;
+}
 interface IUpdateState {
   modalboolean: boolean;
   addUpdateName: string;
@@ -15,24 +19,17 @@ interface IUpdateState {
   pushTechnique: number;
   pushVisual: number;
 }
-interface IUpdateProps {
-  name: string;
-  paformance: number;
-  technique: number;
-  visual: number;
-  belong: string;
-  id: number;
-}
+
 class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
   constructor(props: IUpdateProps) {
     super(props);
     this.state = {
       addUpdateName: "",
       modalboolean: false,
-      pushName: this.props.name,
-      pushPerformance: this.props.paformance,
-      pushTechnique: this.props.technique,
-      pushVisual: this.props.visual
+      pushName: this.props.IupdateArgs.name,
+      pushPerformance: this.props.IupdateArgs.paformance,
+      pushTechnique: this.props.IupdateArgs.technique,
+      pushVisual: this.props.IupdateArgs.visual
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -73,6 +70,14 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
     });
   }
   public render() {
+    // const x:IupdateArgs = {
+    //   belong: "Roselllll";
+    //   id: this.state.;
+    //   name: string;
+    //   paformance: number;
+    //   technique: number;
+    //   visual: number;
+    // }
     return (
       <React.Fragment>
         <button onClick={this.handleOpenModal}>編集</button>
@@ -124,15 +129,16 @@ const mapStateToProps = (state: IMemberState[]) => {
 };
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    addtodo: (
-      name: string,
-      paformance: number,
-      technique: number,
-      visual: number,
-      belong: string,
-      id: number
-    ) => dispatch(addmember(name, paformance, technique, visual, belong, id)),
-    updateMemberList: (id: number) => dispatch(updateMember(id))
+    // addtodo: (
+    //   name: string,
+    //   paformance: number,
+    //   technique: number,
+    //   visual: number,
+    //   belong: string,
+    //   id: number
+    // ) => dispatch(addmember(name, paformance, technique, visual, belong, id)),
+    updateMemberList: (updateArgsObj: IupdateArgs) =>
+      dispatch(updateMember(updateArgsObj))
   };
 };
 

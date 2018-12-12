@@ -10,9 +10,18 @@ export interface IAddMember {
   id: number;
 }
 
+export interface IupdateArgs {
+  belong: string;
+  id: number;
+  name: string;
+  paformance: number;
+  technique: number;
+  visual: number;
+}
+
 export interface IUpdateMember {
   type: ActionType.UPDATEMEMBER;
-  id: number;
+  updateArgsObj: IupdateArgs;
 }
 
 export type addAction = IAddMember | IUpdateMember;

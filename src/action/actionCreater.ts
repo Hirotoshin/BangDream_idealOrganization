@@ -1,4 +1,4 @@
-import { IAddMember, IUpdateMember } from "./action";
+import { IAddMember, IupdateArgs, IUpdateMember } from "./action";
 import { ActionType } from "./actionType";
 
 export function addmember(
@@ -20,9 +20,9 @@ export function addmember(
   };
 }
 
-export function updateMember(id: number): IUpdateMember {
+export function updateMember(updateArgsObj: IupdateArgs): IUpdateMember {
   return {
-    id,
-    type: ActionType.UPDATEMEMBER
+    type: ActionType.UPDATEMEMBER,
+    updateArgsObj
   };
 }

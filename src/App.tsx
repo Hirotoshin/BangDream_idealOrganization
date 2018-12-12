@@ -4,6 +4,7 @@ import * as React from "react";
 import * as ReactModal from "react-modal";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
+import { IupdateArgs } from "./action/action";
 import { addmember } from "./action/actionCreater";
 import IdealParty from "./component/idealParty";
 import MemberAdd from "./component/memberAdd";
@@ -50,6 +51,14 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
   public render() {
     const memberlist = this.props.memberList;
     const memberListJSX = memberlist.map((item: IMemberState, i) => {
+      const x: IupdateArgs = {
+        belong: item.belong,
+        id: item.id,
+        name: item.name,
+        paformance: item.paformance,
+        technique: item.technique,
+        visual: item.visual
+      };
       return (
         <div key={i}>
           {this.state.isMemberDone ? (
@@ -63,7 +72,7 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
               <br />
               Visual:{item.visual}
               <p />
-              <UpdateMember {...item} key={i} />
+              <UpdateMember IupdateArgs={x} />
             </Card>
           ) : null}
         </div>
