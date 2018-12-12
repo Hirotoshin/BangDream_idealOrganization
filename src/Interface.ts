@@ -1,4 +1,11 @@
-import { IMemberState } from "./reducer/MemberReducer";
+export interface IMemberState {
+  name: string;
+  paformance: number;
+  technique: number;
+  visual: number;
+  belong: string;
+  id: number;
+}
 
 export interface IMemberProps {
   memberList: IMemberState[];
@@ -12,6 +19,11 @@ export interface IMemberProps {
   ) => void;
 }
 
+export interface IUpdateProps {
+  memberList: IMemberState[];
+  IupdateArgs: IMemberState;
+  updateMemberList: (updateArgsObj: IMemberState, id: number) => void;
+}
 export interface IMemberComponentState {
   idealpartymodal: boolean;
   inputText: string;

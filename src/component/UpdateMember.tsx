@@ -2,15 +2,10 @@ import * as React from "react";
 import * as ReactModal from "react-modal";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { IupdateArgs } from "../action/action";
 import { updateMember } from "../action/actionCreater";
 // import { IMemberProps } from "../Interface";
-import { IMemberState } from "../reducer/MemberReducer";
+import { IMemberState, IUpdateProps } from "../Interface";
 
-interface IUpdateProps {
-  IupdateArgs: IupdateArgs;
-  updateMemberList: (updateArgsObj: IupdateArgs) => void;
-}
 interface IUpdateState {
   modalboolean: boolean;
   addUpdateName: string;
@@ -18,6 +13,7 @@ interface IUpdateState {
   pushPerformance: number;
   pushTechnique: number;
   pushVisual: number;
+  pushId: number;
 }
 
 class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
@@ -26,6 +22,7 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
     this.state = {
       addUpdateName: "",
       modalboolean: false,
+      pushId: this.props.IupdateArgs.id,
       pushName: this.props.IupdateArgs.name,
       pushPerformance: this.props.IupdateArgs.paformance,
       pushTechnique: this.props.IupdateArgs.technique,
@@ -70,14 +67,19 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
     });
   }
   public render() {
-    // const x:IupdateArgs = {
-    //   belong: "Roselllll";
-    //   id: this.state.;
-    //   name: string;
-    //   paformance: number;
-    //   technique: number;
-    //   visual: number;
-    // }
+    const x: IMemberState = {
+      belong: "ROselllll",
+      id: this.state.pushId,
+      name: this.state.pushName,
+      paformance: this.state.pushPerformance,
+      technique: this.state.pushTechnique,
+      visual: this.state.pushVisual
+    };
+    const confirmUpdate = () => {
+      console.log("name::" + this.state.pushName);
+      this.props.updateMemberList(x, this.props.IupdateArgs.id);
+      this.handleCloseModal();
+    };
     return (
       <React.Fragment>
         <button onClick={this.handleOpenModal}>編集</button>
@@ -115,7 +117,7 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
           <button>ハロハピ</button>
           <p />
           <button onClick={this.handleCloseModal}>閉じる</button>
-          <button onClick={this.handleCloseModal}>変更</button>
+          <button onClick={confirmUpdate}>変更</button>
         </ReactModal>
       </React.Fragment>
     );
@@ -129,16 +131,8 @@ const mapStateToProps = (state: IMemberState[]) => {
 };
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    // addtodo: (
-    //   name: string,
-    //   paformance: number,
-    //   technique: number,
-    //   visual: number,
-    //   belong: string,
-    //   id: number
-    // ) => dispatch(addmember(name, paformance, technique, visual, belong, id)),
-    updateMemberList: (updateArgsObj: IupdateArgs) =>
-      dispatch(updateMember(updateArgsObj))
+    updateMemberList: (updateArgsObj: IMemberState, id: number) =>
+      dispatch(updateMember(updateArgsObj, id))
   };
 };
 

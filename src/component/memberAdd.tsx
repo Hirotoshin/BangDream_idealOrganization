@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { addmember } from "../action/actionCreater";
 import { IMemberProps } from "../Interface";
-import { IMemberState } from "../reducer/MemberReducer";
+import { IMemberState } from "../Interface";
 // import { IMemberState } from "../reducer/MemberReducer";
 
 interface IAddMemberModalState {

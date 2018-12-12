@@ -1,3 +1,4 @@
+import { IMemberState } from "../Interface";
 import { ActionType } from "./actionType";
 
 export interface IAddMember {
@@ -10,18 +11,10 @@ export interface IAddMember {
   id: number;
 }
 
-export interface IupdateArgs {
-  belong: string;
-  id: number;
-  name: string;
-  paformance: number;
-  technique: number;
-  visual: number;
-}
-
 export interface IUpdateMember {
   type: ActionType.UPDATEMEMBER;
-  updateArgsObj: IupdateArgs;
+  updateArgsObj: IMemberState;
+  id: number;
 }
 
 export type addAction = IAddMember | IUpdateMember;

@@ -4,13 +4,13 @@ import * as React from "react";
 import * as ReactModal from "react-modal";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { IupdateArgs } from "./action/action";
+// import { IupdateArgs } from "./action/action";
 import { addmember } from "./action/actionCreater";
 import IdealParty from "./component/idealParty";
 import MemberAdd from "./component/memberAdd";
 import UpdateMember from "./component/UpdateMember";
 import { IMemberComponentState, IMemberProps } from "./Interface";
-import { IMemberState } from "./reducer/MemberReducer";
+import { IMemberState } from "./Interface";
 
 ReactModal.setAppElement(document.getElementById("root") as HTMLElement);
 
@@ -51,9 +51,11 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
   public render() {
     const memberlist = this.props.memberList;
     const memberListJSX = memberlist.map((item: IMemberState, i) => {
-      const x: IupdateArgs = {
+      console.log("item:" + item.name, "i:" + i);
+
+      const x: IMemberState = {
         belong: item.belong,
-        id: item.id,
+        id: i,
         name: item.name,
         paformance: item.paformance,
         technique: item.technique,

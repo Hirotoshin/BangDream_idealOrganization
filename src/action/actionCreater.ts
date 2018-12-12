@@ -1,4 +1,5 @@
-import { IAddMember, IupdateArgs, IUpdateMember } from "./action";
+import { IMemberState } from "../Interface";
+import { IAddMember, IUpdateMember } from "./action";
 import { ActionType } from "./actionType";
 
 export function addmember(
@@ -20,8 +21,12 @@ export function addmember(
   };
 }
 
-export function updateMember(updateArgsObj: IupdateArgs): IUpdateMember {
+export function updateMember(
+  updateArgsObj: IMemberState,
+  id: number
+): IUpdateMember {
   return {
+    id,
     type: ActionType.UPDATEMEMBER,
     updateArgsObj
   };

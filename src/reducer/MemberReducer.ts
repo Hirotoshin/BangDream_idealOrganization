@@ -1,23 +1,16 @@
 import { addAction } from "../action/action";
 import { ActionType } from "../action/actionType";
+import { IMemberState } from "../Interface";
 
-export interface IMemberState {
-  name: string;
-  paformance: number;
-  technique: number;
-  visual: number;
-  belong: string;
-  id: number;
-}
 const initialState: IMemberState[] = [
-  {
-    belong: "Roselia",
-    id: 0,
-    name: "TestMember",
-    paformance: 100,
-    technique: 100,
-    visual: 100
-  }
+  // {
+  //   belong: "Roselia",
+  //   id: 0,
+  //   name: "TestMember",
+  //   paformance: 100,
+  //   technique: 100,
+  //   visual: 100
+  // }
 ];
 
 function MemberReducer(
@@ -46,7 +39,8 @@ function MemberReducer(
         technique: action.updateArgsObj.technique,
         visual: action.updateArgsObj.visual
       };
-      return (afterState[action.updateArgsObj.id] = updateMemberState);
+      console.log("object::" + afterState[action.updateArgsObj.id].name);
+      return afterState.splice(action.updateArgsObj.id, 1, updateMemberState);
     default:
       return state;
   }
