@@ -78,7 +78,7 @@ class MemberAdd extends React.Component<IMemberProps, IAddMemberModalState> {
         this.state.techniqueId,
         this.state.visualId,
         "poppin party",
-        "test id"
+        0
       );
       this.handleCloseModal();
     };
@@ -126,7 +126,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       technique: number,
       visual: number,
       belong: string,
-      id: string
+      id: number
     ) => dispatch(addmember(name, paformance, technique, visual, belong, id))
   };
 };

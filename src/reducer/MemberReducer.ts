@@ -7,9 +7,18 @@ export interface IMemberState {
   technique: number;
   visual: number;
   belong: string;
-  id: string;
+  id: number;
 }
-const initialState: IMemberState[] = [];
+const initialState: IMemberState[] = [
+  {
+    belong: "Roselia",
+    id: 0,
+    name: "TestMember",
+    paformance: 100,
+    technique: 100,
+    visual: 100
+  }
+];
 
 function MemberReducer(
   state: IMemberState[] = initialState,
@@ -28,6 +37,8 @@ function MemberReducer(
       };
       afterState.push(memberState);
       return afterState;
+    case ActionType.UPDATEMEMBER:
+      return afterState[action.id];
     default:
       return state;
   }

@@ -8,7 +8,7 @@ export interface IMemberProps {
     technique: number,
     visual: number,
     belong: string,
-    id: string
+    id: number
   ) => void;
 }
 

@@ -1,4 +1,4 @@
-import { IAddMember } from "./action";
+import { IAddMember, IUpdateMember } from "./action";
 import { ActionType } from "./actionType";
 
 export function addmember(
@@ -7,7 +7,7 @@ export function addmember(
   technique: number,
   visual: number,
   belong: string,
-  id: string
+  id: number
 ): IAddMember {
   return {
     belong,
@@ -17,5 +17,12 @@ export function addmember(
     technique,
     type: ActionType.ADDMEMBER,
     visual
+  };
+}
+
+export function updateMember(id: number): IUpdateMember {
+  return {
+    id,
+    type: ActionType.UPDATEMEMBER
   };
 }

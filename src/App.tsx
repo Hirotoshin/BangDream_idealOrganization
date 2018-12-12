@@ -62,7 +62,8 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
               Technique:{item.technique}
               <br />
               Visual:{item.visual}
-              <UpdateMember />
+              <p />
+              <UpdateMember {...item} key={i} />
             </Card>
           ) : null}
         </div>
@@ -99,7 +100,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       technique: number,
       visual: number,
       belong: string,
-      id: string
+      id: number
     ) => dispatch(addmember(name, paformance, technique, visual, belong, id))
   };
 };

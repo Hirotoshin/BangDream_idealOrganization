@@ -7,7 +7,12 @@ export interface IAddMember {
   technique: number;
   visual: number;
   belong: string;
-  id: string;
+  id: number;
 }
 
-export type addAction = IAddMember;
+export interface IUpdateMember {
+  type: ActionType.UPDATEMEMBER;
+  id: number;
+}
+
+export type addAction = IAddMember | IUpdateMember;

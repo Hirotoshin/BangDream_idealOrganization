@@ -1,3 +1,4 @@
 export enum ActionType {
-  ADDMEMBER = "ADDMEMBER"
+  ADDMEMBER = "ADDMEMBER",
+  UPDATEMEMBER = "UPDATEMEMBER"
 }
