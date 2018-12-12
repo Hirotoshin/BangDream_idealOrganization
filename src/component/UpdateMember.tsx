@@ -10,6 +10,10 @@ import { IMemberState } from "../reducer/MemberReducer";
 interface IUpdateState {
   modalboolean: boolean;
   addUpdateName: string;
+  pushName: string;
+  pushPerformance: number;
+  pushTechnique: number;
+  pushVisual: number;
 }
 interface IUpdateProps {
   name: string;
@@ -24,10 +28,18 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
     super(props);
     this.state = {
       addUpdateName: "",
-      modalboolean: false
+      modalboolean: false,
+      pushName: this.props.name,
+      pushPerformance: this.props.paformance,
+      pushTechnique: this.props.technique,
+      pushVisual: this.props.visual
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.pushName = this.pushName.bind(this);
+    this.pushPaformance = this.pushPaformance.bind(this);
+    this.pushTechnique = this.pushTechnique.bind(this);
+    this.pushVisual = this.pushVisual.bind(this);
   }
 
   public handleOpenModal() {
@@ -40,30 +52,57 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
       modalboolean: false
     });
   }
-  // public addUpdateNamePush() {
-  //   this.setState({
-  //     addUpdateName: this.
-  //   });
-  // }
+  public pushName(e: React.FormEvent<HTMLInputElement>) {
+    this.setState({
+      pushName: e.currentTarget.value
+    });
+  }
+  public pushPaformance(e: React.FormEvent<HTMLInputElement>) {
+    this.setState({
+      pushPerformance: Number(e.currentTarget.value)
+    });
+  }
+  public pushTechnique(e: React.FormEvent<HTMLInputElement>) {
+    this.setState({
+      pushTechnique: Number(e.currentTarget.value)
+    });
+  }
+  public pushVisual(e: React.FormEvent<HTMLInputElement>) {
+    this.setState({
+      pushVisual: Number(e.currentTarget.value)
+    });
+  }
   public render() {
-    // const updateAddMember = () => {
-    //   this.props.addtodo(this.state.addUpdateName, 0, 0, 0, "poppin party", 0);
-    // };
     return (
       <React.Fragment>
         <button onClick={this.handleOpenModal}>編集</button>
         <ReactModal isOpen={this.state.modalboolean}>
           <h1>編集</h1>
           <h2>名前</h2>
-          <input type={"text"} value={this.props.name} />
+          <input
+            type={"text"}
+            value={this.state.pushName}
+            onChange={this.pushName}
+          />
           <h2>パフォーマンス</h2>
-          <input type={"text"} value={this.props.paformance} />
+          <input
+            type={"text"}
+            value={this.state.pushPerformance}
+            onChange={this.pushPaformance}
+          />
           <h2>テクニック</h2>
-          <input type={"text"} value={this.props.technique} />
+          <input
+            type={"text"}
+            value={this.state.pushTechnique}
+            onChange={this.pushTechnique}
+          />
           <h2>ビジュアル</h2>
-          <input type={"text"} value={this.props.visual} />
+          <input
+            type={"text"}
+            value={this.state.pushVisual}
+            onChange={this.pushVisual}
+          />
           <h2>グループ</h2>
-          {this.props.name}
           <button>Poppin'Party</button>
           <button>After glow</button>
           <button>Pastel Palettes</button>
