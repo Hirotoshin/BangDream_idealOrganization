@@ -3,14 +3,14 @@ import { ActionType } from "../action/actionType";
 import { IMemberState } from "../Interface";
 
 const initialState: IMemberState[] = [
-  // {
-  //   belong: "Roselia",
-  //   id: 0,
-  //   name: "TestMember",
-  //   paformance: 100,
-  //   technique: 100,
-  //   visual: 100
-  // }
+  {
+    belong: "Roselia",
+    id: 0,
+    name: "TestMember",
+    paformance: 100,
+    technique: 100,
+    visual: 100
+  }
 ];
 
 function MemberReducer(
@@ -40,7 +40,8 @@ function MemberReducer(
         visual: action.updateArgsObj.visual
       };
       console.log("object::" + afterState[action.updateArgsObj.id].name);
-      return afterState.splice(action.updateArgsObj.id, 1, updateMemberState);
+      afterState.splice(action.updateArgsObj.id, 1, updateMemberState);
+      return afterState;
     default:
       return state;
   }

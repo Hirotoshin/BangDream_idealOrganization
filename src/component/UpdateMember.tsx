@@ -93,7 +93,7 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
           />
           <h2>パフォーマンス</h2>
           <input
-            type={"text"}
+            type={"number"}
             value={this.state.pushPerformance}
             onChange={this.pushPaformance}
           />
