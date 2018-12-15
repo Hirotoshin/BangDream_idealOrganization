@@ -10,7 +10,9 @@ class Member extends React.Component<{}, {}> {
       <div className="row">
         <Panel>
           <Panel.Heading>
-            <Panel.Title componentClass="h3">Poppin'Party</Panel.Title>
+            <Panel.Title>
+              <Checkbox>Poppin'Party</Checkbox>
+            </Panel.Title>
           </Panel.Heading>
           <Panel.Body>
             <Checkbox>戸山 香澄</Checkbox>
@@ -21,7 +23,11 @@ class Member extends React.Component<{}, {}> {
           </Panel.Body>
         </Panel>
         <Panel>
-          <Panel.Heading>Roselia</Panel.Heading>
+          <Panel.Heading>
+            <Panel.Title>
+              <Checkbox>Roselia</Checkbox>
+            </Panel.Title>
+          </Panel.Heading>
           <Panel.Body>
             <Checkbox>湊 友希那</Checkbox>
             <Checkbox>氷川 紗夜</Checkbox>
@@ -32,7 +38,9 @@ class Member extends React.Component<{}, {}> {
         </Panel>
         <Panel>
           <Panel.Heading>
-            <Panel.Title>Afterglow</Panel.Title>
+            <Panel.Title>
+              <Checkbox>Afterglow</Checkbox>
+            </Panel.Title>
           </Panel.Heading>
           <Panel.Body>
             <Checkbox>美竹 蘭</Checkbox>
@@ -44,7 +52,9 @@ class Member extends React.Component<{}, {}> {
         </Panel>
         <Panel>
           <Panel.Heading>
-            <Panel.Title>Pastel*Palettes</Panel.Title>
+            <Panel.Title>
+              <Checkbox>Pastel*Palettes</Checkbox>
+            </Panel.Title>
           </Panel.Heading>
           <Panel.Body>
             <Checkbox>丸山 彩</Checkbox>
@@ -56,7 +66,9 @@ class Member extends React.Component<{}, {}> {
         </Panel>
         <Panel>
           <Panel.Heading>
-            <Panel.Title>ハロー、ハッピーワールド!</Panel.Title>
+            <Panel.Title>
+              <Checkbox>ハロー、ハッピーワールド!</Checkbox>
+            </Panel.Title>
           </Panel.Heading>
           <Panel.Body>
             <Checkbox>弦巻 こころ</Checkbox>
