@@ -99,11 +99,13 @@ class MemberAdd extends React.Component<IMemberProps, IAddMemberModalState> {
           <h2>ビジュアル</h2>
           <input type={"text"} onChange={this.handleInputVisualNumber} />
           <h2>グループ</h2>
-          <button>Poppin'Party</button>
-          <button>After glow</button>
-          <button>Pastel Palettes</button>
-          <button>Roselia</button>
-          <button>ハロハピ</button>
+          <select id="groupName">
+            <option>Poppin'Party</option>
+            <option>After glow</option>
+            <option>Pastel Palettes</option>
+            <option>Roselia</option>
+            <option>ハロハピ</option>
+          </select>
           <p />
           <button onClick={clickClose}>確定</button>
         </ReactModal>

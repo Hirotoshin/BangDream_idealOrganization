@@ -110,11 +110,13 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
             onChange={this.pushVisual}
           />
           <h2>グループ</h2>
-          <button>Poppin'Party</button>
-          <button>After glow</button>
-          <button>Pastel Palettes</button>
-          <button>Roselia</button>
-          <button>ハロハピ</button>
+          <select id="groupName">
+            <option>Poppin'Party</option>
+            <option>After glow</option>
+            <option>Pastel Palettes</option>
+            <option>Roselia</option>
+            <option>ハロハピ</option>
+          </select>
           <p />
           <button onClick={this.handleCloseModal}>閉じる</button>
           <button onClick={confirmUpdate}>変更</button>
