@@ -107,6 +107,7 @@ class MemberAdd extends React.Component<IMemberProps, IAddMemberModalState> {
             <option>ハロハピ</option>
           </select>
           <p />
+          <button onClick={this.handleCloseModal}>戻る</button>
           <button onClick={clickClose}>確定</button>
         </ReactModal>
       </React.Fragment>
