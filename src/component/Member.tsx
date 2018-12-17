@@ -1,81 +1,337 @@
 import * as React from "react";
 import { Checkbox, Panel } from "react-bootstrap";
 
-class Member extends React.Component<{}, {}> {
+interface IGroupMember {
+  poppin: boolean[];
+  afterglow: boolean[];
+  roselia: boolean[];
+  pasupare: boolean[];
+  halohapi: boolean[];
+}
+class Member extends React.Component<{}, IGroupMember> {
   constructor(props: any) {
     super(props);
+    this.state = {
+      afterglow: [false, false, false, false, false, false],
+      halohapi: [false, false, false, false, false, false],
+      pasupare: [false, false, false, false, false, false],
+      poppin: [false, false, false, false, false, false],
+      roselia: [false, false, false, false, false, false]
+    };
+    this.allCheckedPoppin = this.allCheckedPoppin.bind(this);
+    this.checkBoxHandler = this.checkBoxHandler.bind(this);
+    this.allCheckedAfterglow = this.allCheckedAfterglow.bind(this);
+    this.allCheckedHellohappy = this.allCheckedHellohappy.bind(this);
+    this.allCheckedPastel = this.allCheckedPastel.bind(this);
+    this.allCheckedRoselia = this.allCheckedRoselia.bind(this);
   }
+
+  public allCheckedPoppin() {
+    if (this.state.poppin[0]) {
+      this.setState({
+        poppin: [false, false, false, false, false, false]
+      });
+    } else {
+      this.setState({
+        poppin: [true, true, true, true, true, true]
+      });
+    }
+  }
+
+  public allCheckedAfterglow() {
+    if (this.state.afterglow[0]) {
+      this.setState({
+        afterglow: [false, false, false, false, false, false]
+      });
+    } else {
+      this.setState({
+        afterglow: [true, true, true, true, true, true]
+      });
+    }
+  }
+
+  public allCheckedHellohappy() {
+    if (this.state.halohapi[0]) {
+      this.setState({
+        halohapi: [false, false, false, false, false, false]
+      });
+    } else {
+      this.setState({
+        halohapi: [true, true, true, true, true, true]
+      });
+    }
+  }
+
+  public allCheckedRoselia() {
+    if (this.state.roselia[0]) {
+      this.setState({
+        roselia: [false, false, false, false, false, false]
+      });
+    } else {
+      this.setState({
+        roselia: [true, true, true, true, true, true]
+      });
+    }
+  }
+
+  public allCheckedPastel() {
+    if (this.state.pasupare[0]) {
+      this.setState({
+        pasupare: [false, false, false, false, false, false]
+      });
+    } else {
+      this.setState({
+        pasupare: [true, true, true, true, true, true]
+      });
+    }
+  }
+
+  public checkBoxHandler(group: string, index: number) {
+    return () => {
+      const afterState = JSON.parse(JSON.stringify(this.state));
+      switch (group) {
+        case "poppin":
+          afterState[group][index] = !this.state.poppin[index];
+          return this.setState(afterState);
+        case "roselia":
+          afterState[group][index] = !this.state.roselia[index];
+          return this.setState(afterState);
+        case "pastel":
+          afterState[group][index] = !this.state.pasupare[index];
+          return this.setState(afterState);
+        case "afterglow":
+          afterState[group][index] = !this.state.afterglow[index];
+          return this.setState(afterState);
+        case "halohapi":
+          afterState[group][index] = !this.state.halohapi[index];
+          return this.setState(afterState);
+        default:
+          return this.state;
+      }
+    };
+  }
+
   public render() {
     return (
       <div className="row">
         <Panel>
           <Panel.Heading>
             <Panel.Title>
-              <Checkbox>Poppin'Party</Checkbox>
+              <Checkbox
+                checked={this.state.poppin[0]}
+                onChange={this.allCheckedPoppin}
+              >
+                Poppin'Party
+              </Checkbox>
             </Panel.Title>
           </Panel.Heading>
           <Panel.Body>
-            <Checkbox>戸山 香澄</Checkbox>
-            <Checkbox>花園 たえ</Checkbox>
-            <Checkbox>牛込 りみ</Checkbox>
-            <Checkbox>山吹 沙綾</Checkbox>
-            <Checkbox>市ヶ谷 有咲</Checkbox>
+            <Checkbox
+              checked={this.state.poppin[1]}
+              onChange={this.checkBoxHandler("poppin", 1)}
+            >
+              戸山 香澄
+            </Checkbox>
+            <Checkbox
+              checked={this.state.poppin[2]}
+              onChange={this.checkBoxHandler("poppin", 2)}
+            >
+              花園 たえ
+            </Checkbox>
+            <Checkbox
+              checked={this.state.poppin[3]}
+              onChange={this.checkBoxHandler("poppin", 3)}
+            >
+              牛込 りみ
+            </Checkbox>
+            <Checkbox
+              checked={this.state.poppin[4]}
+              onChange={this.checkBoxHandler("poppin", 4)}
+            >
+              山吹 沙綾
+            </Checkbox>
+            <Checkbox
+              checked={this.state.poppin[5]}
+              onChange={this.checkBoxHandler("poppin", 5)}
+            >
+              市ヶ谷 有咲
+            </Checkbox>
           </Panel.Body>
         </Panel>
         <Panel>
           <Panel.Heading>
             <Panel.Title>
-              <Checkbox>Roselia</Checkbox>
+              <Checkbox
+                checked={this.state.roselia[0]}
+                onChange={this.allCheckedRoselia}
+              >
+                Roselia
+              </Checkbox>
             </Panel.Title>
           </Panel.Heading>
           <Panel.Body>
-            <Checkbox>湊 友希那</Checkbox>
-            <Checkbox>氷川 紗夜</Checkbox>
-            <Checkbox>今井 リサ</Checkbox>
-            <Checkbox>宇田川 あこ</Checkbox>
-            <Checkbox>白金 燐子</Checkbox>
+            <Checkbox
+              checked={this.state.roselia[1]}
+              onChange={this.checkBoxHandler("roselia", 1)}
+            >
+              湊 友希那
+            </Checkbox>
+            <Checkbox
+              checked={this.state.roselia[2]}
+              onChange={this.checkBoxHandler("roselia", 2)}
+            >
+              氷川 紗夜
+            </Checkbox>
+            <Checkbox
+              checked={this.state.roselia[3]}
+              onChange={this.checkBoxHandler("roselia", 3)}
+            >
+              今井 リサ
+            </Checkbox>
+            <Checkbox
+              checked={this.state.roselia[4]}
+              onChange={this.checkBoxHandler("roselia", 4)}
+            >
+              宇田川 あこ
+            </Checkbox>
+            <Checkbox
+              checked={this.state.roselia[5]}
+              onChange={this.checkBoxHandler("roselia", 5)}
+            >
+              白金 燐子
+            </Checkbox>
           </Panel.Body>
         </Panel>
         <Panel>
           <Panel.Heading>
             <Panel.Title>
-              <Checkbox>Afterglow</Checkbox>
+              <Checkbox
+                checked={this.state.afterglow[0]}
+                onChange={this.allCheckedAfterglow}
+              >
+                Afterglow
+              </Checkbox>
             </Panel.Title>
           </Panel.Heading>
           <Panel.Body>
-            <Checkbox>美竹 蘭</Checkbox>
-            <Checkbox>青葉 モカ</Checkbox>
-            <Checkbox>上原 ひまり</Checkbox>
-            <Checkbox>宇田川 巴</Checkbox>
-            <Checkbox>羽沢 つぐみ</Checkbox>
+            <Checkbox
+              checked={this.state.afterglow[1]}
+              onChange={this.checkBoxHandler("afterglow", 1)}
+            >
+              美竹 蘭
+            </Checkbox>
+            <Checkbox
+              checked={this.state.afterglow[2]}
+              onChange={this.checkBoxHandler("afterglow", 2)}
+            >
+              青葉 モカ
+            </Checkbox>
+            <Checkbox
+              checked={this.state.afterglow[3]}
+              onChange={this.checkBoxHandler("afterglow", 3)}
+            >
+              上原 ひまり
+            </Checkbox>
+            <Checkbox
+              checked={this.state.afterglow[4]}
+              onChange={this.checkBoxHandler("afterglow", 4)}
+            >
+              宇田川 巴
+            </Checkbox>
+            <Checkbox
+              checked={this.state.afterglow[5]}
+              onChange={this.checkBoxHandler("afterglow", 5)}
+            >
+              羽沢 つぐみ
+            </Checkbox>
           </Panel.Body>
         </Panel>
         <Panel>
           <Panel.Heading>
             <Panel.Title>
-              <Checkbox>Pastel*Palettes</Checkbox>
+              <Checkbox
+                checked={this.state.pasupare[0]}
+                onChange={this.allCheckedPastel}
+              >
+                Pastel*Palettes
+              </Checkbox>
             </Panel.Title>
           </Panel.Heading>
           <Panel.Body>
-            <Checkbox>丸山 彩</Checkbox>
-            <Checkbox>氷川 日菜</Checkbox>
-            <Checkbox>白鷺 千聖</Checkbox>
-            <Checkbox>大和 麻弥</Checkbox>
-            <Checkbox>若宮 イヴ</Checkbox>
+            <Checkbox
+              checked={this.state.pasupare[1]}
+              onChange={this.checkBoxHandler("pastel", 1)}
+            >
+              丸山 彩
+            </Checkbox>
+            <Checkbox
+              checked={this.state.pasupare[2]}
+              onChange={this.checkBoxHandler("pastel", 2)}
+            >
+              氷川 日菜
+            </Checkbox>
+            <Checkbox
+              checked={this.state.pasupare[3]}
+              onChange={this.checkBoxHandler("pastel", 3)}
+            >
+              白鷺 千聖
+            </Checkbox>
+            <Checkbox
+              checked={this.state.pasupare[4]}
+              onChange={this.checkBoxHandler("pastel", 4)}
+            >
+              大和 麻弥
+            </Checkbox>
+            <Checkbox
+              checked={this.state.pasupare[5]}
+              onChange={this.checkBoxHandler("pastel", 5)}
+            >
+              若宮 イヴ
+            </Checkbox>
           </Panel.Body>
         </Panel>
         <Panel>
           <Panel.Heading>
             <Panel.Title>
-              <Checkbox>ハロー、ハッピーワールド!</Checkbox>
+              <Checkbox
+                checked={this.state.halohapi[0]}
+                onChange={this.allCheckedHellohappy}
+              >
+                ハロー、ハッピーワールド!
+              </Checkbox>
             </Panel.Title>
           </Panel.Heading>
           <Panel.Body>
-            <Checkbox>弦巻 こころ</Checkbox>
-            <Checkbox>瀬田 薫</Checkbox>
-            <Checkbox>北沢 はぐみ</Checkbox>
-            <Checkbox>松原 花音</Checkbox>
-            <Checkbox>奥沢 美咲</Checkbox>
+            <Checkbox
+              checked={this.state.halohapi[1]}
+              onChange={this.checkBoxHandler("halohapi", 1)}
+            >
+              弦巻 こころ
+            </Checkbox>
+            <Checkbox
+              checked={this.state.halohapi[2]}
+              onChange={this.checkBoxHandler("halohapi", 2)}
+            >
+              瀬田 薫
+            </Checkbox>
+            <Checkbox
+              checked={this.state.halohapi[3]}
+              onChange={this.checkBoxHandler("halohapi", 3)}
+            >
+              北沢 はぐみ
+            </Checkbox>
+            <Checkbox
+              checked={this.state.halohapi[4]}
+              onChange={this.checkBoxHandler("halohapi", 4)}
+            >
+              松原 花音
+            </Checkbox>
+            <Checkbox
+              checked={this.state.halohapi[5]}
+              onChange={this.checkBoxHandler("halohapi", 5)}
+            >
+              奥沢 美咲
+            </Checkbox>
           </Panel.Body>
         </Panel>
       </div>

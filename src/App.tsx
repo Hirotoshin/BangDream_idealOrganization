@@ -11,6 +11,7 @@ import MemberAdd from "./component/memberAdd";
 import UpdateMember from "./component/UpdateMember";
 import { IMemberComponentState, IMemberProps } from "./Interface";
 import { IMemberState } from "./Interface";
+import { IrootState } from "./reducer/index";
 
 ReactModal.setAppElement(document.getElementById("root") as HTMLElement);
 
@@ -97,9 +98,9 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
   }
 }
 
-const mapStateToProps = (state: IMemberState[]) => {
+const mapStateToProps = (state: IrootState) => {
   return {
-    memberList: state
+    memberList: state.addmember
   };
 };
 

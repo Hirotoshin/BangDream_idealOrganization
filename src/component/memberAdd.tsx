@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { addmember } from "../action/actionCreater";
 import { IMemberProps } from "../Interface";
-import { IMemberState } from "../Interface";
+import { IrootState } from "../reducer/index";
 // import { IMemberState } from "../reducer/MemberReducer";
 
 interface IAddMemberModalState {
@@ -115,9 +115,9 @@ class MemberAdd extends React.Component<IMemberProps, IAddMemberModalState> {
   }
 }
 
-const mapStateToProps = (state: IMemberState[]) => {
+const mapStateToProps = (state: IrootState) => {
   return {
-    memberList: state
+    memberList: state.addmember
   };
 };
 

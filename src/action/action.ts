@@ -1,5 +1,5 @@
 import { IMemberState } from "../Interface";
-import { ActionType } from "./actionType";
+import { ActionGroupType, ActionType } from "./actionType";
 
 export interface IAddMember {
   type: ActionType.ADDMEMBER;
@@ -16,5 +16,11 @@ export interface IUpdateMember {
   updateArgsObj: IMemberState;
   id: number;
 }
+export interface IGroupMember {
+  type: ActionGroupType.GROUPMEMBER;
+  id: number;
+  name: string;
+}
 
 export type addAction = IAddMember | IUpdateMember;
+export type groupMemberAction = IGroupMember;

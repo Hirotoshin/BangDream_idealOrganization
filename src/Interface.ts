@@ -34,3 +34,8 @@ export interface IMemberComponentState {
   visualId: number;
   isMemberDone: boolean;
 }
+
+export interface IGroupMember {
+  id: number;
+  name: string;
+}

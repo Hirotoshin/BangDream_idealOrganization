@@ -5,10 +5,10 @@ import { applyMiddleware, createStore } from "redux";
 import { logger } from "redux-logger";
 import App from "./App";
 import "./index.css";
-import MemberReducer from "./reducer/MemberReducer";
+import { rootReducer } from "./reducer/index";
 import registerServiceWorker from "./registerServiceWorker";
 
-const store = createStore(MemberReducer, applyMiddleware(logger));
+const store = createStore(rootReducer, applyMiddleware(logger));
 
 ReactDOM.render(
   <Provider store={store}>
