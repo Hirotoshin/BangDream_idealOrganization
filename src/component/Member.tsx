@@ -1,21 +1,36 @@
 import * as React from "react";
 import { Checkbox, Panel } from "react-bootstrap";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+// import { IGroupMemberAction } from "../action/action";
+import { groupMember } from "../action/actionCreater";
+// import { IGroupMember } from "../Interface";
+import { IrootState } from "../reducer/index";
 
-interface IGroupMember {
+interface IGroupMemberState {
   poppin: boolean[];
   afterglow: boolean[];
   roselia: boolean[];
   pasupare: boolean[];
   halohapi: boolean[];
+  groupMember: string[];
+  poppinMember: string[];
 }
-class Member extends React.Component<{}, IGroupMember> {
+
+// interface IGroupMemberProps {
+//   groupMemberList: IGroupMemberAction[];
+//   groupmember: (id: number, name: string) => void;
+// }
+class Member extends React.Component<{}, IGroupMemberState> {
   constructor(props: any) {
     super(props);
     this.state = {
       afterglow: [false, false, false, false, false, false],
+      groupMember: [],
       halohapi: [false, false, false, false, false, false],
       pasupare: [false, false, false, false, false, false],
       poppin: [false, false, false, false, false, false],
+      poppinMember: ["戸山 香澄", "花園 たえ"],
       roselia: [false, false, false, false, false, false]
     };
     this.allCheckedPoppin = this.allCheckedPoppin.bind(this);
@@ -92,6 +107,7 @@ class Member extends React.Component<{}, IGroupMember> {
       switch (group) {
         case "poppin":
           afterState[group][index] = !this.state.poppin[index];
+          console.log(this.refs.name);
           return this.setState(afterState);
         case "roselia":
           afterState[group][index] = !this.state.roselia[index];
@@ -112,6 +128,12 @@ class Member extends React.Component<{}, IGroupMember> {
   }
 
   public render() {
+    // const returnGroupMember = this.props.groupMemberList.push(
+    //   (item: IGroupMember, i) => {
+    //     return item.name;
+    //   }
+    // );
+
     return (
       <div className="row">
         <Panel>
@@ -339,4 +361,18 @@ class Member extends React.Component<{}, IGroupMember> {
   }
 }
 
-export default Member;
+const mapStateToProps = (state: IrootState) => {
+  return {
+    addgroupMember: state.membergroup
+  };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    groupMember: (id: number, name: string) => dispatch(groupMember(id, name))
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Member);

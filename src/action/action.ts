@@ -16,11 +16,11 @@ export interface IUpdateMember {
   updateArgsObj: IMemberState;
   id: number;
 }
-export interface IGroupMember {
+export interface IGroupMemberAction {
   type: ActionGroupType.GROUPMEMBER;
   id: number;
   name: string;
 }
 
 export type addAction = IAddMember | IUpdateMember;
-export type groupMemberAction = IGroupMember;
+export type groupMemberAction = IGroupMemberAction;

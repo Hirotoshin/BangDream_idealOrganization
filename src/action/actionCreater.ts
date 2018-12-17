@@ -1,5 +1,5 @@
 import { IMemberState } from "../Interface";
-import { IAddMember, IGroupMember, IUpdateMember } from "./action";
+import { IAddMember, IGroupMemberAction, IUpdateMember } from "./action";
 import { ActionGroupType, ActionType } from "./actionType";
 
 export function addmember(
@@ -32,7 +32,7 @@ export function updateMember(
   };
 }
 
-export function groupMember(id: number, name: string): IGroupMember {
+export function groupMember(id: number, name: string): IGroupMemberAction {
   return {
     id,
     name,

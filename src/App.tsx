@@ -75,6 +75,8 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
               <br />
               Visual:{item.visual}
               <p />
+              BandGroup:{item.belong}
+              <br />
               <UpdateMember IupdateArgs={x} />
             </Card>
           ) : null}

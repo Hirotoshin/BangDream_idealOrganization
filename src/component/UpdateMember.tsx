@@ -14,6 +14,7 @@ interface IUpdateState {
   pushTechnique: number;
   pushVisual: number;
   pushId: number;
+  belong: string;
 }
 
 class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
@@ -21,6 +22,7 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
     super(props);
     this.state = {
       addUpdateName: "",
+      belong: "",
       modalboolean: false,
       pushId: this.props.IupdateArgs.id,
       pushName: this.props.IupdateArgs.name,
@@ -34,6 +36,7 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
     this.pushPaformance = this.pushPaformance.bind(this);
     this.pushTechnique = this.pushTechnique.bind(this);
     this.pushVisual = this.pushVisual.bind(this);
+    this.onChangeBandGroup = this.onChangeBandGroup.bind(this);
   }
 
   public handleOpenModal() {
@@ -66,9 +69,14 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
       pushVisual: Number(e.currentTarget.value)
     });
   }
+  public onChangeBandGroup(e: React.FormEvent<HTMLSelectElement>) {
+    this.setState({
+      belong: e.currentTarget.value
+    });
+  }
   public render() {
     const x: IMemberState = {
-      belong: "ROselllll",
+      belong: this.state.belong,
       id: this.state.pushId,
       name: this.state.pushName,
       paformance: this.state.pushPerformance,
@@ -110,7 +118,7 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
             onChange={this.pushVisual}
           />
           <h2>グループ</h2>
-          <select id="groupName">
+          <select onChange={this.onChangeBandGroup}>
             <option>Poppin'Party</option>
             <option>After glow</option>
             <option>Pastel Palettes</option>

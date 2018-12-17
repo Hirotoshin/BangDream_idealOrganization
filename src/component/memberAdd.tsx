@@ -13,11 +13,13 @@ interface IAddMemberModalState {
   techniqueId: number;
   visualId: number;
   inputText: string;
+  bandName: string;
 }
 class MemberAdd extends React.Component<IMemberProps, IAddMemberModalState> {
   constructor(props: IMemberProps) {
     super(props);
     this.state = {
+      bandName: "",
       inputText: "",
       modalBoolean: false,
       paformanceId: 0,
@@ -34,6 +36,7 @@ class MemberAdd extends React.Component<IMemberProps, IAddMemberModalState> {
       this
     );
     this.handleInputVisualNumber = this.handleInputVisualNumber.bind(this);
+    this.onChangeSelect = this.onChangeSelect.bind(this);
   }
 
   public handleOpenModal() {
@@ -70,6 +73,11 @@ class MemberAdd extends React.Component<IMemberProps, IAddMemberModalState> {
       inputText: e.currentTarget.value
     });
   }
+  public onChangeSelect(e: React.FormEvent<HTMLSelectElement>): void {
+    this.setState({
+      bandName: e.currentTarget.value
+    });
+  }
   public render() {
     const clickClose = () => {
       this.props.addtodo(
@@ -77,7 +85,7 @@ class MemberAdd extends React.Component<IMemberProps, IAddMemberModalState> {
         this.state.paformanceId,
         this.state.techniqueId,
         this.state.visualId,
-        "poppin party",
+        this.state.bandName,
         0
       );
       this.handleCloseModal();
@@ -99,7 +107,7 @@ class MemberAdd extends React.Component<IMemberProps, IAddMemberModalState> {
           <h2>ビジュアル</h2>
           <input type={"text"} onChange={this.handleInputVisualNumber} />
           <h2>グループ</h2>
-          <select id="groupName">
+          <select onChange={this.onChangeSelect}>
             <option>Poppin'Party</option>
             <option>After glow</option>
             <option>Pastel Palettes</option>
