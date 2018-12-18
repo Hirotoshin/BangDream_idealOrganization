@@ -43,8 +43,7 @@ class IdealParty extends React.Component<{}, IidealParty> {
             <option>クール</option>
           </select>
           <h2>ピックアップメンバー</h2>
-          <Member />
-          <button onClick={this.modalClose}>close</button>
+          <Member closemodal={this.modalClose} />
         </ReactModal>
       </React.Fragment>
     );

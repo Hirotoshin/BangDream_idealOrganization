@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 // import { IGroupMemberAction } from "../action/action";
 import { groupMember } from "../action/actionCreater";
+import { bandGroup } from "../Interface";
 // import { IGroupMember } from "../Interface";
 import { IrootState } from "../reducer/index";
 
@@ -15,13 +16,20 @@ interface IGroupMemberState {
   halohapi: boolean[];
   groupMember: string[];
   poppinMember: string[];
+  test: string;
 }
 
 // interface IGroupMemberProps {
 //   groupMemberList: IGroupMemberAction[];
 //   groupmember: (id: number, name: string) => void;
 // }
-class Member extends React.Component<{}, IGroupMemberState> {
+
+interface ICloseModal {
+  closemodal: () => void;
+  groupMember: (name: string[]) => void;
+}
+
+class Member extends React.Component<ICloseModal, IGroupMemberState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -31,7 +39,8 @@ class Member extends React.Component<{}, IGroupMemberState> {
       pasupare: [false, false, false, false, false, false],
       poppin: [false, false, false, false, false, false],
       poppinMember: ["戸山 香澄", "花園 たえ"],
-      roselia: [false, false, false, false, false, false]
+      roselia: [false, false, false, false, false, false],
+      test: ""
     };
     this.allCheckedPoppin = this.allCheckedPoppin.bind(this);
     this.checkBoxHandler = this.checkBoxHandler.bind(this);
@@ -39,6 +48,7 @@ class Member extends React.Component<{}, IGroupMemberState> {
     this.allCheckedHellohappy = this.allCheckedHellohappy.bind(this);
     this.allCheckedPastel = this.allCheckedPastel.bind(this);
     this.allCheckedRoselia = this.allCheckedRoselia.bind(this);
+    this.onclickedConfirm = this.onclickedConfirm.bind(this);
   }
 
   public allCheckedPoppin() {
@@ -107,8 +117,8 @@ class Member extends React.Component<{}, IGroupMemberState> {
       switch (group) {
         case "poppin":
           afterState[group][index] = !this.state.poppin[index];
-          console.log(this.refs.name);
-          return this.setState(afterState);
+          this.setState(afterState);
+          break;
         case "roselia":
           afterState[group][index] = !this.state.roselia[index];
           return this.setState(afterState);
@@ -126,16 +136,22 @@ class Member extends React.Component<{}, IGroupMemberState> {
       }
     };
   }
-
+  public onclickedConfirm() {
+    const groupMemberInonclicked = [];
+    for (let i = 1; i < 6; i++) {
+      if (this.state.poppin[i] === true) {
+        groupMemberInonclicked.push(bandGroup.poppinParty[i - 1]);
+        // console.log(groupMemberInonclicked);
+      }
+    }
+    // console.log(groupMemberInonclicked);
+    this.props.groupMember(groupMemberInonclicked);
+    // console.log(this.state);
+    // this.props.closemodal();
+  }
   public render() {
-    // const returnGroupMember = this.props.groupMemberList.push(
-    //   (item: IGroupMember, i) => {
-    //     return item.name;
-    //   }
-    // );
-
     return (
-      <div className="row">
+      <div className="container">
         <Panel>
           <Panel.Heading>
             <Panel.Title>
@@ -356,6 +372,8 @@ class Member extends React.Component<{}, IGroupMemberState> {
             </Checkbox>
           </Panel.Body>
         </Panel>
+        <button onClick={this.props.closemodal}>close</button>
+        <button onClick={this.onclickedConfirm}>確定</button>
       </div>
     );
   }
@@ -369,7 +387,7 @@ const mapStateToProps = (state: IrootState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    groupMember: (id: number, name: string) => dispatch(groupMember(id, name))
+    groupMember: (name: string[]) => dispatch(groupMember(name))
   };
 };
 export default connect(

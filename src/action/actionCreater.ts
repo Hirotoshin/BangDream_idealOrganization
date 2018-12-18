@@ -32,10 +32,9 @@ export function updateMember(
   };
 }
 
-export function groupMember(id: number, name: string): IGroupMemberAction {
+export function groupMember(Members: string[]): IGroupMemberAction {
   return {
-    id,
-    name,
+    Members,
     type: ActionGroupType.GROUPMEMBER
   };
 }

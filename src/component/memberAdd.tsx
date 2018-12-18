@@ -3,7 +3,7 @@ import * as ReactModal from "react-modal";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { addmember } from "../action/actionCreater";
-import { IMemberProps } from "../Interface";
+import { IMemberProps2 } from "../Interface";
 import { IrootState } from "../reducer/index";
 // import { IMemberState } from "../reducer/MemberReducer";
 
@@ -15,8 +15,8 @@ interface IAddMemberModalState {
   inputText: string;
   bandName: string;
 }
-class MemberAdd extends React.Component<IMemberProps, IAddMemberModalState> {
-  constructor(props: IMemberProps) {
+class MemberAdd extends React.Component<IMemberProps2, IAddMemberModalState> {
+  constructor(props: IMemberProps2) {
     super(props);
     this.state = {
       bandName: "",

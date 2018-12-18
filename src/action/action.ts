@@ -18,8 +18,7 @@ export interface IUpdateMember {
 }
 export interface IGroupMemberAction {
   type: ActionGroupType.GROUPMEMBER;
-  id: number;
-  name: string;
+  Members: string[];
 }
 
 export type addAction = IAddMember | IUpdateMember;

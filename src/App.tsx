@@ -9,14 +9,14 @@ import { addmember } from "./action/actionCreater";
 import IdealParty from "./component/idealParty";
 import MemberAdd from "./component/memberAdd";
 import UpdateMember from "./component/UpdateMember";
-import { IMemberComponentState, IMemberProps } from "./Interface";
+import { IMemberComponentState, IMemberProps1 } from "./Interface";
 import { IMemberState } from "./Interface";
 import { IrootState } from "./reducer/index";
 
 ReactModal.setAppElement(document.getElementById("root") as HTMLElement);
 
-class App extends React.Component<IMemberProps, IMemberComponentState> {
-  constructor(props: IMemberProps) {
+class App extends React.Component<IMemberProps1, IMemberComponentState> {
+  constructor(props: IMemberProps1) {
     super(props);
     this.state = {
       idealpartymodal: false,
@@ -91,6 +91,7 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
         <MemberAdd />
         <h2>編成条件</h2>
         <IdealParty />
+        {this.props.membergroup}
         <h2>手持ちメンバー一覧</h2>
         <button onClick={this.pushAllMember}>表示</button>
         <h3>以下、testDebug</h3>
@@ -102,7 +103,8 @@ class App extends React.Component<IMemberProps, IMemberComponentState> {
 
 const mapStateToProps = (state: IrootState) => {
   return {
-    memberList: state.addmember
+    memberList: state.addmember,
+    membergroup: state.membergroup
   };
 };
 
