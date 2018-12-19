@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 // import { IupdateArgs } from "./action/action";
 import { addmember } from "./action/actionCreater";
+import Calculate from "./component/calculate";
 import IdealParty from "./component/idealParty";
 import MemberAdd from "./component/memberAdd";
 import UpdateMember from "./component/UpdateMember";
@@ -52,8 +53,6 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
   public render() {
     const memberlist = this.props.memberList;
     const memberListJSX = memberlist.map((item: IMemberState, i) => {
-      console.log("item:" + item.name, "i:" + i);
-
       const x: IMemberState = {
         belong: item.belong,
         id: i,
@@ -96,6 +95,8 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
         <button onClick={this.pushAllMember}>表示</button>
         <h3>以下、testDebug</h3>
         {memberListJSX}
+        <div>以下calculate</div>
+        <Calculate />
       </React.Fragment>
     );
   }

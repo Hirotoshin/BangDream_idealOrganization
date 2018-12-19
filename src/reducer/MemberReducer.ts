@@ -4,12 +4,52 @@ import { IMemberState } from "../Interface";
 
 const initialState: IMemberState[] = [
   {
-    belong: "Roselia",
+    belong: "PoppinParty",
     id: 0,
-    name: "TestMember",
+    name: "戸山 香澄",
+    paformance: 80,
+    technique: 100,
+    visual: 90
+  },
+  {
+    belong: "PoppinParty",
+    id: 0,
+    name: "花園 たえ",
     paformance: 100,
     technique: 100,
-    visual: 100
+    visual: 80
+  },
+  {
+    belong: "PoppinParty",
+    id: 0,
+    name: "牛込 りみ",
+    paformance: 60,
+    technique: 80,
+    visual: 90
+  },
+  {
+    belong: "PoppinParty",
+    id: 0,
+    name: "山吹 沙綾",
+    paformance: 90,
+    technique: 90,
+    visual: 90
+  },
+  {
+    belong: "PoppinParty",
+    id: 0,
+    name: "市ヶ谷 有咲",
+    paformance: 60,
+    technique: 50,
+    visual: 120
+  },
+  {
+    belong: "PoppinParty",
+    id: 0,
+    name: "市ヶ谷 有咲",
+    paformance: 60,
+    technique: 50,
+    visual: 1120
   }
 ];
 

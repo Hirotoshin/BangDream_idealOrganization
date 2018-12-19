@@ -49,6 +49,27 @@ export interface IMemberComponentState {
 }
 
 export const bandGroup = {
+  afterglow: [
+    "美竹 蘭",
+    "青葉 モカ",
+    "上原 ひまり",
+    "宇田川 巴",
+    "羽沢 つぐみ"
+  ],
+  hallowHappyworld: [
+    "弦巻 こころ",
+    "瀬田 薫",
+    "北沢 はぐみ",
+    "松原 花音",
+    "奥沢 美咲"
+  ],
+  pastelPalettes: [
+    "丸山 彩",
+    "氷川 日菜",
+    "白鷺 千聖",
+    "大和 麻弥",
+    "若宮 イヴ"
+  ],
   poppinParty: [
     "戸山 香澄",
     "花園 たえ",

@@ -141,13 +141,19 @@ class Member extends React.Component<ICloseModal, IGroupMemberState> {
     for (let i = 1; i < 6; i++) {
       if (this.state.poppin[i] === true) {
         groupMemberInonclicked.push(bandGroup.poppinParty[i - 1]);
-        // console.log(groupMemberInonclicked);
+      } else if (this.state.roselia[i] === true) {
+        groupMemberInonclicked.push(bandGroup.roselia[i - 1]);
+      } else if (this.state.pasupare[i] === true) {
+        groupMemberInonclicked.push(bandGroup.pastelPalettes[i - 1]);
+      } else if (this.state.afterglow[i] === true) {
+        groupMemberInonclicked.push(bandGroup.afterglow[i - 1]);
+      } else if (this.state.halohapi[i] === true) {
+        groupMemberInonclicked.push(bandGroup.hallowHappyworld[i - 1]);
       }
     }
-    // console.log(groupMemberInonclicked);
     this.props.groupMember(groupMemberInonclicked);
     // console.log(this.state);
-    // this.props.closemodal();
+    this.props.closemodal();
   }
   public render() {
     return (
