@@ -43,6 +43,15 @@ class Calculate extends React.Component<ICalculateProps, ITest> {
         }
       }
     });
+    arrayMember.sort((a, b) => {
+      if (a.totalPower < b.totalPower) {
+        return 1;
+      } else if (a.totalPower > b.totalPower) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
 
     this.setState({
       test: arrayMember
@@ -60,8 +69,7 @@ class Calculate extends React.Component<ICalculateProps, ITest> {
             </div>
           );
         })}
-        <button onClick={this.calculate} />
-        {console.log(this.state)}
+        <button onClick={this.calculate}>編成</button>
       </div>
     );
   }
