@@ -52,9 +52,16 @@ class Calculate extends React.Component<ICalculateProps, ITest> {
         return 0;
       }
     });
+    const returnArrayMember: ICalculateState[] = [
+      arrayMember[0],
+      arrayMember[1],
+      arrayMember[2],
+      arrayMember[3],
+      arrayMember[4]
+    ];
 
     this.setState({
-      test: arrayMember
+      test: returnArrayMember
     });
   }
   public render() {
