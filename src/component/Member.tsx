@@ -15,7 +15,6 @@ interface IGroupMemberState {
   pasupare: boolean[];
   halohapi: boolean[];
   groupMember: string[];
-  poppinMember: string[];
   test: string;
 }
 
@@ -38,7 +37,6 @@ class Member extends React.Component<ICloseModal, IGroupMemberState> {
       halohapi: [false, false, false, false, false, false],
       pasupare: [false, false, false, false, false, false],
       poppin: [false, false, false, false, false, false],
-      poppinMember: ["戸山 香澄", "花園 たえ"],
       roselia: [false, false, false, false, false, false],
       test: ""
     };
