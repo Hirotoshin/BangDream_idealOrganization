@@ -5,57 +5,48 @@ import { IMemberState } from "../Interface";
 const initialState: IMemberState[] = [
   {
     belong: "PoppinParty",
-    detail: "",
+    detail: "みんなで遊園地！",
     id: 0,
     name: "戸山 香澄",
-    paformance: 80,
-    technique: 100,
-    visual: 90
+    paformance: 13427,
+    technique: 10382,
+    visual: 8558
   },
   {
     belong: "PoppinParty",
-    detail: "",
+    detail: "しあわせの共有",
     id: 0,
     name: "花園 たえ",
-    paformance: 100,
-    technique: 100,
-    visual: 80
+    paformance: 8098,
+    technique: 14113,
+    visual: 9982
   },
   {
     belong: "PoppinParty",
-    detail: "",
+    detail: "チョココロネな時間",
     id: 0,
     name: "牛込 りみ",
-    paformance: 60,
-    technique: 80,
-    visual: 90
+    paformance: 8098,
+    technique: 10103,
+    visual: 13990
   },
   {
     belong: "PoppinParty",
-    detail: "",
+    detail: "おそろいのシュシュ",
     id: 0,
     name: "山吹 沙綾",
-    paformance: 90,
-    technique: 90,
-    visual: 90
+    paformance: 14050,
+    technique: 8038,
+    visual: 10042
   },
   {
     belong: "PoppinParty",
-    detail: "",
+    detail: "満開の桜の下で",
     id: 0,
     name: "市ヶ谷 有咲",
-    paformance: 60,
-    technique: 50,
-    visual: 120
-  },
-  {
-    belong: "PoppinParty",
-    detail: "",
-    id: 0,
-    name: "市ヶ谷 有咲",
-    paformance: 60,
-    technique: 50,
-    visual: 1120
+    paformance: 10496,
+    technique: 11831,
+    visual: 11415
   }
 ];
 
