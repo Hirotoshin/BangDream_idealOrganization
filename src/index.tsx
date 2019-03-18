@@ -19,7 +19,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = createStore(persistedReducer, applyMiddleware(logger));
-const persistor = persistStore(store);
+export const persistor = persistStore(store);
 
 ReactDOM.render(
   <Provider store={store}>

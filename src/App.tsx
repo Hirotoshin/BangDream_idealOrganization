@@ -10,6 +10,7 @@ import Calculate from "./component/calculate";
 import IdealParty from "./component/idealParty";
 import MemberAdd from "./component/memberAdd";
 import UpdateMember from "./component/UpdateMember";
+import { persistor } from "./index";
 import { IMemberComponentState, IMemberProps1 } from "./Interface";
 import { IMemberState } from "./Interface";
 import { IrootState } from "./reducer/index";
@@ -33,6 +34,7 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
     this.pushAllMember = this.pushAllMember.bind(this);
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.onclickClear = this.onclickClear.bind(this);
   }
   public pushAllMember() {
     this.setState({
@@ -48,6 +50,9 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
     this.setState({
       modalboolean: false
     });
+  }
+  public onclickClear() {
+    persistor.purge();
   }
 
   public render() {
@@ -65,23 +70,25 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
       return (
         <div key={i}>
           {this.state.isMemberDone ? (
-            <Card>
-              member
-              <br />
-              name:{item.name}
-              <br />
-              detail:{item.detail}
-              <br />
-              Performance:{item.paformance}
-              <br />
-              Technique:{item.technique}
-              <br />
-              Visual:{item.visual}
-              <p />
-              BandGroup:{item.belong}
-              <br />
-              <UpdateMember IupdateArgs={x} />
-            </Card>
+            <div style={{ float: "left" }}>
+              <Card style={{ width: 200 }}>
+                member
+                <br />
+                name:{item.name}
+                <br />
+                detail:{item.detail}
+                <br />
+                Performance:{item.paformance}
+                <br />
+                Technique:{item.technique}
+                <br />
+                Visual:{item.visual}
+                <p />
+                BandGroup:{item.belong}
+                <br />
+                <UpdateMember IupdateArgs={x} />
+              </Card>
+            </div>
           ) : null}
         </div>
       );
@@ -90,6 +97,7 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
     return (
       <React.Fragment>
         <h1>BangDream! 理想編成計算</h1>
+        <button onClick={this.onclickClear}>保存情報クリア</button>
         <h2>メンバー追加</h2>
         <MemberAdd />
         <h2>編成条件</h2>
@@ -97,6 +105,7 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
         {this.props.membergroup}
         <h2>手持ちメンバー一覧</h2>
         <button onClick={this.pushAllMember}>表示</button>
+        <br />
         <h3>以下、testDebug</h3>
         {memberListJSX}
         <div>以下calculate</div>
