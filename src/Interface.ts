@@ -5,6 +5,7 @@ export interface IMemberState {
   visual: number;
   belong: string;
   id: number;
+  detail: string;
 }
 
 export interface IMemberProps1 {
@@ -16,7 +17,8 @@ export interface IMemberProps1 {
     technique: number,
     visual: number,
     belong: string,
-    id: number
+    id: number,
+    detail: string
   ) => void;
 }
 
@@ -28,7 +30,8 @@ export interface IMemberProps2 {
     technique: number,
     visual: number,
     belong: string,
-    id: number
+    id: number,
+    detail: string
   ) => void;
 }
 

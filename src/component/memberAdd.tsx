@@ -14,12 +14,14 @@ interface IAddMemberModalState {
   visualId: number;
   inputText: string;
   bandName: string;
+  detail: string;
 }
 class MemberAdd extends React.Component<IMemberProps2, IAddMemberModalState> {
   constructor(props: IMemberProps2) {
     super(props);
     this.state = {
       bandName: "",
+      detail: "",
       inputText: "",
       modalBoolean: false,
       paformanceId: 0,
@@ -37,6 +39,7 @@ class MemberAdd extends React.Component<IMemberProps2, IAddMemberModalState> {
     );
     this.handleInputVisualNumber = this.handleInputVisualNumber.bind(this);
     this.onChangeSelect = this.onChangeSelect.bind(this);
+    this.handleInputDetail = this.handleInputDetail.bind(this);
   }
 
   public handleOpenModal() {
@@ -78,6 +81,11 @@ class MemberAdd extends React.Component<IMemberProps2, IAddMemberModalState> {
       bandName: e.currentTarget.value
     });
   }
+  public handleInputDetail(e: React.FormEvent<HTMLInputElement>): void {
+    this.setState({
+      detail: e.currentTarget.value
+    });
+  }
   public render() {
     const clickClose = () => {
       this.props.addtodo(
@@ -86,7 +94,8 @@ class MemberAdd extends React.Component<IMemberProps2, IAddMemberModalState> {
         this.state.techniqueId,
         this.state.visualId,
         this.state.bandName,
-        0
+        0,
+        this.state.detail
       );
       this.handleCloseModal();
     };
@@ -100,6 +109,8 @@ class MemberAdd extends React.Component<IMemberProps2, IAddMemberModalState> {
           <h1>メンバー追加</h1>
           <h2>名前</h2>
           <input type={"text"} onChange={this.handleInputText} />
+          <h2>詳細</h2>
+          <input type={"text"} onChange={this.handleInputDetail} />
           <h2>パフォーマンス</h2>
           <input type={"text"} onChange={this.handleInputPerformanceNumber} />
           <h2>テクニック</h2>
@@ -137,8 +148,12 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       technique: number,
       visual: number,
       belong: string,
-      id: number
-    ) => dispatch(addmember(name, paformance, technique, visual, belong, id))
+      id: number,
+      detail: string
+    ) =>
+      dispatch(
+        addmember(name, paformance, technique, visual, belong, id, detail)
+      )
   };
 };
 

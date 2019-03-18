@@ -8,10 +8,12 @@ export function addmember(
   technique: number,
   visual: number,
   belong: string,
-  id: number
+  id: number,
+  detail: string
 ): IAddMember {
   return {
     belong,
+    detail,
     id,
     name,
     paformance,

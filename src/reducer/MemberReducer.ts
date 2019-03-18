@@ -5,6 +5,7 @@ import { IMemberState } from "../Interface";
 const initialState: IMemberState[] = [
   {
     belong: "PoppinParty",
+    detail: "",
     id: 0,
     name: "戸山 香澄",
     paformance: 80,
@@ -13,6 +14,7 @@ const initialState: IMemberState[] = [
   },
   {
     belong: "PoppinParty",
+    detail: "",
     id: 0,
     name: "花園 たえ",
     paformance: 100,
@@ -21,6 +23,7 @@ const initialState: IMemberState[] = [
   },
   {
     belong: "PoppinParty",
+    detail: "",
     id: 0,
     name: "牛込 りみ",
     paformance: 60,
@@ -29,6 +32,7 @@ const initialState: IMemberState[] = [
   },
   {
     belong: "PoppinParty",
+    detail: "",
     id: 0,
     name: "山吹 沙綾",
     paformance: 90,
@@ -37,6 +41,7 @@ const initialState: IMemberState[] = [
   },
   {
     belong: "PoppinParty",
+    detail: "",
     id: 0,
     name: "市ヶ谷 有咲",
     paformance: 60,
@@ -45,6 +50,7 @@ const initialState: IMemberState[] = [
   },
   {
     belong: "PoppinParty",
+    detail: "",
     id: 0,
     name: "市ヶ谷 有咲",
     paformance: 60,
@@ -62,6 +68,7 @@ function MemberReducer(
     case ActionType.ADDMEMBER:
       const memberState: IMemberState = {
         belong: action.belong,
+        detail: action.detail,
         id: action.id,
         name: action.name,
         paformance: action.paformance,
@@ -73,6 +80,7 @@ function MemberReducer(
     case ActionType.UPDATEMEMBER:
       const updateMemberState: IMemberState = {
         belong: action.updateArgsObj.belong,
+        detail: action.updateArgsObj.detail,
         id: action.updateArgsObj.id,
         name: action.updateArgsObj.name,
         paformance: action.updateArgsObj.paformance,

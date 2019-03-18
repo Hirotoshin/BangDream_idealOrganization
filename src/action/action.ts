@@ -9,6 +9,7 @@ export interface IAddMember {
   visual: number;
   belong: string;
   id: number;
+  detail: string;
 }
 
 export interface IUpdateMember {

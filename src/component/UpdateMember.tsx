@@ -15,6 +15,7 @@ interface IUpdateState {
   pushVisual: number;
   pushId: number;
   belong: string;
+  pushDetail: string;
 }
 
 class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
@@ -24,6 +25,7 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
       addUpdateName: "",
       belong: "",
       modalboolean: false,
+      pushDetail: this.props.IupdateArgs.detail,
       pushId: this.props.IupdateArgs.id,
       pushName: this.props.IupdateArgs.name,
       pushPerformance: this.props.IupdateArgs.paformance,
@@ -77,6 +79,7 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
   public render() {
     const x: IMemberState = {
       belong: this.state.belong,
+      detail: this.state.pushDetail,
       id: this.state.pushId,
       name: this.state.pushName,
       paformance: this.state.pushPerformance,

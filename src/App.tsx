@@ -55,6 +55,7 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
     const memberListJSX = memberlist.map((item: IMemberState, i) => {
       const x: IMemberState = {
         belong: item.belong,
+        detail: item.detail,
         id: i,
         name: item.name,
         paformance: item.paformance,
@@ -68,7 +69,10 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
               member
               <br />
               name:{item.name}
-              <br /> Performance:{item.paformance}
+              <br />
+              detail:{item.detail}
+              <br />
+              Performance:{item.paformance}
               <br />
               Technique:{item.technique}
               <br />
@@ -117,8 +121,12 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       technique: number,
       visual: number,
       belong: string,
-      id: number
-    ) => dispatch(addmember(name, paformance, technique, visual, belong, id))
+      id: number,
+      detail: string
+    ) =>
+      dispatch(
+        addmember(name, paformance, technique, visual, belong, id, detail)
+      )
   };
 };
 
