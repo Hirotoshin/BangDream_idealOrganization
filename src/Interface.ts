@@ -1,37 +1,40 @@
 export interface IMemberState {
-  name: string;
-  paformance: number;
-  technique: number;
-  visual: number;
-  belong: string;
+  name: string; // メンバーの名前
+  paformance: number; // パフォーマンス値
+  technique: number; // テクニック値
+  visual: number; // ビジュアル値
+  belong: string; // 所属しているバンド名
   id: number;
-  detail: string;
+  detail: string; // カードの詳細文
+  typeId: number; // パワフル、クール、ビジュアル、ハッピーのどれかを判断するid
 }
 
 export interface IMemberProps1 {
   memberList: IMemberState[];
   membergroup: string[];
   addtodo: (
-    name: string,
-    paformance: number,
-    technique: number,
-    visual: number,
-    belong: string,
+    name: string, // メンバーの名前
+    paformance: number, // パフォーマンス値
+    technique: number, // テクニック値
+    visual: number, // ビジュアル値
+    belong: string, // 所属しているバンド名
     id: number,
-    detail: string
+    detail: string, // カードの詳細文
+    typeId: number // パワフル、クール、ビジュアル、ハッピーのどれかを判断するid
   ) => void;
 }
 
 export interface IMemberProps2 {
   memberList: IMemberState[];
   addtodo: (
-    name: string,
-    paformance: number,
-    technique: number,
-    visual: number,
-    belong: string,
+    name: string, // メンバーの名前
+    paformance: number, // パフォーマンス値
+    technique: number, // テクニック値
+    visual: number, // ビジュアル値
+    belong: string, // 所属しているバンド名
     id: number,
-    detail: string
+    detail: string, // カードの詳細文
+    typeId: number // パワフル、クール、ビジュアル、ハッピーのどれかを判断するid
   ) => void;
 }
 

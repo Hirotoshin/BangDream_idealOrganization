@@ -15,6 +15,7 @@ interface IAddMemberModalState {
   inputText: string;
   bandName: string;
   detail: string;
+  typeId: number;
 }
 class MemberAdd extends React.Component<IMemberProps2, IAddMemberModalState> {
   constructor(props: IMemberProps2) {
@@ -26,6 +27,7 @@ class MemberAdd extends React.Component<IMemberProps2, IAddMemberModalState> {
       modalBoolean: false,
       paformanceId: 0,
       techniqueId: 0,
+      typeId: 0,
       visualId: 0
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -40,6 +42,7 @@ class MemberAdd extends React.Component<IMemberProps2, IAddMemberModalState> {
     this.handleInputVisualNumber = this.handleInputVisualNumber.bind(this);
     this.onChangeSelect = this.onChangeSelect.bind(this);
     this.handleInputDetail = this.handleInputDetail.bind(this);
+    this.onChangeSelectTypeId = this.onChangeSelectTypeId.bind(this);
   }
 
   public handleOpenModal() {
@@ -81,6 +84,26 @@ class MemberAdd extends React.Component<IMemberProps2, IAddMemberModalState> {
       bandName: e.currentTarget.value
     });
   }
+  public onChangeSelectTypeId(e: React.FormEvent<HTMLSelectElement>): void {
+    if (e.currentTarget.value === "パワフル") {
+      this.setState({
+        typeId: 1
+      });
+    } else if (e.currentTarget.value === "ピュア") {
+      this.setState({
+        typeId: 2
+      });
+    } else if (e.currentTarget.value === "クール") {
+      this.setState({
+        typeId: 3
+      });
+    } else if (e.currentTarget.value === "ハッピー") {
+      this.setState({
+        typeId: 4
+      });
+    }
+    console.log(this.state.typeId);
+  }
   public handleInputDetail(e: React.FormEvent<HTMLInputElement>): void {
     this.setState({
       detail: e.currentTarget.value
@@ -95,7 +118,8 @@ class MemberAdd extends React.Component<IMemberProps2, IAddMemberModalState> {
         this.state.visualId,
         this.state.bandName,
         0,
-        this.state.detail
+        this.state.detail,
+        this.state.typeId
       );
       this.handleCloseModal();
     };
@@ -111,6 +135,13 @@ class MemberAdd extends React.Component<IMemberProps2, IAddMemberModalState> {
           <input type={"text"} onChange={this.handleInputText} />
           <h2>詳細</h2>
           <input type={"text"} onChange={this.handleInputDetail} />
+          <h2>タイプ</h2>
+          <select onChange={this.onChangeSelectTypeId}>
+            <option>パワフル</option>
+            <option>ピュア</option>
+            <option>クール</option>
+            <option>ハッピー</option>
+          </select>
           <h2>パフォーマンス</h2>
           <input type={"text"} onChange={this.handleInputPerformanceNumber} />
           <h2>テクニック</h2>
@@ -149,10 +180,20 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       visual: number,
       belong: string,
       id: number,
-      detail: string
+      detail: string,
+      typeId: number
     ) =>
       dispatch(
-        addmember(name, paformance, technique, visual, belong, id, detail)
+        addmember(
+          name,
+          paformance,
+          technique,
+          visual,
+          belong,
+          id,
+          detail,
+          typeId
+        )
       )
   };
 };

@@ -10,6 +10,7 @@ export interface IAddMember {
   belong: string;
   id: number;
   detail: string;
+  typeId: number;
 }
 
 export interface IUpdateMember {

@@ -65,6 +65,7 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
         name: item.name,
         paformance: item.paformance,
         technique: item.technique,
+        typeId: item.typeId,
         visual: item.visual
       };
       return (
@@ -77,6 +78,8 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
                 name:{item.name}
                 <br />
                 detail:{item.detail}
+                <br />
+                type:{item.typeId}
                 <br />
                 Performance:{item.paformance}
                 <br />
@@ -105,10 +108,9 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
         {this.props.membergroup}
         <h2>手持ちメンバー一覧</h2>
         <button onClick={this.pushAllMember}>表示</button>
-        <br />
         <h3>以下、testDebug</h3>
         {memberListJSX}
-        <div>以下calculate</div>
+        <div style={{ float: "left" }}>以下calculate</div>
         <Calculate />
       </React.Fragment>
     );
@@ -131,10 +133,20 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
       visual: number,
       belong: string,
       id: number,
-      detail: string
+      detail: string,
+      typeId: number
     ) =>
       dispatch(
-        addmember(name, paformance, technique, visual, belong, id, detail)
+        addmember(
+          name,
+          paformance,
+          technique,
+          visual,
+          belong,
+          id,
+          detail,
+          typeId
+        )
       )
   };
 };

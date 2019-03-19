@@ -9,7 +9,8 @@ export function addmember(
   visual: number,
   belong: string,
   id: number,
-  detail: string
+  detail: string,
+  typeId: number
 ): IAddMember {
   return {
     belong,
@@ -19,6 +20,7 @@ export function addmember(
     paformance,
     technique,
     type: ActionType.ADDMEMBER,
+    typeId,
     visual
   };
 }

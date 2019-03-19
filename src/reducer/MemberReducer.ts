@@ -10,6 +10,7 @@ const initialState: IMemberState[] = [
     name: "戸山 香澄",
     paformance: 13427,
     technique: 10382,
+    typeId: 0,
     visual: 8558
   },
   {
@@ -19,6 +20,7 @@ const initialState: IMemberState[] = [
     name: "花園 たえ",
     paformance: 8098,
     technique: 14113,
+    typeId: 0,
     visual: 9982
   },
   {
@@ -28,6 +30,7 @@ const initialState: IMemberState[] = [
     name: "牛込 りみ",
     paformance: 8098,
     technique: 10103,
+    typeId: 0,
     visual: 13990
   },
   {
@@ -37,6 +40,7 @@ const initialState: IMemberState[] = [
     name: "山吹 沙綾",
     paformance: 14050,
     technique: 8038,
+    typeId: 0,
     visual: 10042
   },
   {
@@ -46,6 +50,7 @@ const initialState: IMemberState[] = [
     name: "市ヶ谷 有咲",
     paformance: 10496,
     technique: 11831,
+    typeId: 0,
     visual: 11415
   }
 ];
@@ -64,6 +69,7 @@ function MemberReducer(
         name: action.name,
         paformance: action.paformance,
         technique: action.technique,
+        typeId: action.typeId,
         visual: action.visual
       };
       afterState.push(memberState);
@@ -76,6 +82,7 @@ function MemberReducer(
         name: action.updateArgsObj.name,
         paformance: action.updateArgsObj.paformance,
         technique: action.updateArgsObj.technique,
+        typeId: action.updateArgsObj.typeId,
         visual: action.updateArgsObj.visual
       };
       console.log("object::" + afterState[action.updateArgsObj.id].name);

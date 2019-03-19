@@ -16,6 +16,8 @@ interface IUpdateState {
   pushId: number;
   belong: string;
   pushDetail: string;
+  detail: string;
+  typeId: number;
 }
 
 class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
@@ -24,13 +26,15 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
     this.state = {
       addUpdateName: "",
       belong: "",
+      detail: "",
       modalboolean: false,
       pushDetail: this.props.IupdateArgs.detail,
       pushId: this.props.IupdateArgs.id,
       pushName: this.props.IupdateArgs.name,
       pushPerformance: this.props.IupdateArgs.paformance,
       pushTechnique: this.props.IupdateArgs.technique,
-      pushVisual: this.props.IupdateArgs.visual
+      pushVisual: this.props.IupdateArgs.visual,
+      typeId: this.props.IupdateArgs.typeId
     };
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -76,6 +80,31 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
       belong: e.currentTarget.value
     });
   }
+  public handleInputDetail(e: React.FormEvent<HTMLInputElement>): void {
+    this.setState({
+      detail: e.currentTarget.value
+    });
+  }
+  public onChangeSelectTypeId(e: React.FormEvent<HTMLSelectElement>): void {
+    if (e.currentTarget.value === "パワフル") {
+      this.setState({
+        typeId: 1
+      });
+    } else if (e.currentTarget.value === "ピュア") {
+      this.setState({
+        typeId: 2
+      });
+    } else if (e.currentTarget.value === "クール") {
+      this.setState({
+        typeId: 3
+      });
+    } else if (e.currentTarget.value === "ハッピー") {
+      this.setState({
+        typeId: 4
+      });
+    }
+    console.log(this.state.typeId);
+  }
   public render() {
     const x: IMemberState = {
       belong: this.state.belong,
@@ -84,6 +113,7 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
       name: this.state.pushName,
       paformance: this.state.pushPerformance,
       technique: this.state.pushTechnique,
+      typeId: this.state.typeId,
       visual: this.state.pushVisual
     };
     const confirmUpdate = () => {
@@ -102,6 +132,15 @@ class UpdateMember extends React.Component<IUpdateProps, IUpdateState> {
             value={this.state.pushName}
             onChange={this.pushName}
           />
+          <h2>詳細</h2>
+          <input type={"text"} onChange={this.handleInputDetail} />
+          <h2>タイプ</h2>
+          <select onChange={this.onChangeSelectTypeId}>
+            <option>パワフル</option>
+            <option>ピュア</option>
+            <option>クール</option>
+            <option>ハッピー</option>
+          </select>
           <h2>パフォーマンス</h2>
           <input
             type={"number"}
