@@ -10,7 +10,7 @@ const initialState: IMemberState[] = [
     name: "戸山 香澄",
     paformance: 13427,
     technique: 10382,
-    typeId: 0,
+    typeId: 1,
     visual: 8558
   },
   {
@@ -20,7 +20,7 @@ const initialState: IMemberState[] = [
     name: "花園 たえ",
     paformance: 8098,
     technique: 14113,
-    typeId: 0,
+    typeId: 1,
     visual: 9982
   },
   {
@@ -30,7 +30,7 @@ const initialState: IMemberState[] = [
     name: "牛込 りみ",
     paformance: 8098,
     technique: 10103,
-    typeId: 0,
+    typeId: 1,
     visual: 13990
   },
   {
@@ -40,7 +40,7 @@ const initialState: IMemberState[] = [
     name: "山吹 沙綾",
     paformance: 14050,
     technique: 8038,
-    typeId: 0,
+    typeId: 1,
     visual: 10042
   },
   {
@@ -50,7 +50,7 @@ const initialState: IMemberState[] = [
     name: "市ヶ谷 有咲",
     paformance: 10496,
     technique: 11831,
-    typeId: 0,
+    typeId: 2,
     visual: 11415
   }
 ];

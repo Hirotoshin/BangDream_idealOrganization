@@ -7,6 +7,7 @@ import { Dispatch } from "redux";
 // import { IupdateArgs } from "./action/action";
 import { addmember } from "./action/actionCreater";
 import Calculate from "./component/calculate";
+// import CalculateResult from "./component/calculateResult";
 import IdealParty from "./component/idealParty";
 import MemberAdd from "./component/memberAdd";
 import UpdateMember from "./component/UpdateMember";
@@ -28,6 +29,7 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
       modalboolean: false,
       paformanceId: 0,
       techniqueId: 0,
+      typeContent: "",
       visualId: 0
     };
 
@@ -68,6 +70,23 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
         typeId: item.typeId,
         visual: item.visual
       };
+      if (item.typeId === 1) {
+        this.setState({
+          typeContent: "パワフル"
+        });
+      } else if (item.typeId === 2) {
+        this.setState({
+          typeContent: "ピュア"
+        });
+      } else if (item.typeId === 3) {
+        this.setState({
+          typeContent: "クール"
+        });
+      } else if (item.typeId === 4) {
+        this.setState({
+          typeContent: "ハッピー"
+        });
+      }
       return (
         <div key={i}>
           {this.state.isMemberDone ? (
@@ -103,8 +122,8 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
         <button onClick={this.onclickClear}>保存情報クリア</button>
         <h2>メンバー追加</h2>
         <MemberAdd />
-        <h2>編成条件</h2>
-        <IdealParty />
+        {/* <h2>編成条件</h2>
+        <IdealParty /> */}
         {this.props.membergroup}
         <h2>手持ちメンバー一覧</h2>
         <button onClick={this.pushAllMember}>表示</button>
@@ -112,6 +131,7 @@ class App extends React.Component<IMemberProps1, IMemberComponentState> {
         {memberListJSX}
         <div style={{ float: "left" }}>以下calculate</div>
         <Calculate />
+        <IdealParty />
       </React.Fragment>
     );
   }

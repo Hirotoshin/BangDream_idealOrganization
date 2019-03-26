@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Checkbox, Panel } from "react-bootstrap";
+import { Panel } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 // import { IGroupMemberAction } from "../action/action";
@@ -16,6 +16,7 @@ interface IGroupMemberState {
   halohapi: boolean[];
   groupMember: string[];
   test: string;
+  count: number;
 }
 
 // interface IGroupMemberProps {
@@ -33,6 +34,7 @@ class Member extends React.Component<ICloseModal, IGroupMemberState> {
     super(props);
     this.state = {
       afterglow: [false, false, false, false, false, false],
+      count: 0,
       groupMember: [],
       halohapi: [false, false, false, false, false, false],
       pasupare: [false, false, false, false, false, false],
@@ -47,15 +49,18 @@ class Member extends React.Component<ICloseModal, IGroupMemberState> {
     this.allCheckedPastel = this.allCheckedPastel.bind(this);
     this.allCheckedRoselia = this.allCheckedRoselia.bind(this);
     this.onclickedConfirm = this.onclickedConfirm.bind(this);
+    this.checktest = this.checktest.bind(this);
   }
 
   public allCheckedPoppin() {
     if (this.state.poppin[0]) {
       this.setState({
+        count: 0,
         poppin: [false, false, false, false, false, false]
       });
     } else {
       this.setState({
+        count: 5,
         poppin: [true, true, true, true, true, true]
       });
     }
@@ -64,11 +69,13 @@ class Member extends React.Component<ICloseModal, IGroupMemberState> {
   public allCheckedAfterglow() {
     if (this.state.afterglow[0]) {
       this.setState({
-        afterglow: [false, false, false, false, false, false]
+        afterglow: [false, false, false, false, false, false],
+        count: 5
       });
     } else {
       this.setState({
-        afterglow: [true, true, true, true, true, true]
+        afterglow: [true, true, true, true, true, true],
+        count: 0
       });
     }
   }
@@ -76,10 +83,12 @@ class Member extends React.Component<ICloseModal, IGroupMemberState> {
   public allCheckedHellohappy() {
     if (this.state.halohapi[0]) {
       this.setState({
+        count: 0,
         halohapi: [false, false, false, false, false, false]
       });
     } else {
       this.setState({
+        count: 5,
         halohapi: [true, true, true, true, true, true]
       });
     }
@@ -88,10 +97,12 @@ class Member extends React.Component<ICloseModal, IGroupMemberState> {
   public allCheckedRoselia() {
     if (this.state.roselia[0]) {
       this.setState({
+        count: 0,
         roselia: [false, false, false, false, false, false]
       });
     } else {
       this.setState({
+        count: 5,
         roselia: [true, true, true, true, true, true]
       });
     }
@@ -100,23 +111,27 @@ class Member extends React.Component<ICloseModal, IGroupMemberState> {
   public allCheckedPastel() {
     if (this.state.pasupare[0]) {
       this.setState({
+        count: 0,
         pasupare: [false, false, false, false, false, false]
       });
     } else {
       this.setState({
+        count: 5,
         pasupare: [true, true, true, true, true, true]
       });
     }
   }
-
+  // e: React.FormEvent<HTMLInputElement>,
+  public checktest(e: React.FormEvent<HTMLInputElement>) {
+    console.log(e.currentTarget.value);
+  }
   public checkBoxHandler(group: string, index: number) {
     return () => {
       const afterState = JSON.parse(JSON.stringify(this.state));
       switch (group) {
         case "poppin":
           afterState[group][index] = !this.state.poppin[index];
-          this.setState(afterState);
-          break;
+          return this.setState(afterState);
         case "roselia":
           afterState[group][index] = !this.state.roselia[index];
           return this.setState(afterState);
@@ -153,54 +168,74 @@ class Member extends React.Component<ICloseModal, IGroupMemberState> {
     // console.log(this.state);
     this.props.closemodal();
   }
+
+  // public testHandlle() {
+  //   this.console.log();
+  // }
   public render() {
     return (
       <div className="container">
         <Panel>
           <Panel.Heading>
             <Panel.Title>
-              <Checkbox
-                checked={this.state.poppin[0]}
+              <input
+                type="checkbox"
                 onChange={this.allCheckedPoppin}
-              >
-                Poppin'Party
-              </Checkbox>
+                checked={this.state.poppin[0]}
+                onClick={this.checktest}
+                value="Poppin'Party"
+              />
+              Poppin'Party
             </Panel.Title>
           </Panel.Heading>
           <Panel.Body>
-            <Checkbox
+            <input
+              type="checkbox"
               checked={this.state.poppin[1]}
               onChange={this.checkBoxHandler("poppin", 1)}
-            >
-              戸山 香澄
-            </Checkbox>
-            <Checkbox
+              onClick={this.checktest}
+              value="戸山 香澄"
+            />
+            戸山 香澄
+            <p />
+            <input
+              type="checkbox"
               checked={this.state.poppin[2]}
               onChange={this.checkBoxHandler("poppin", 2)}
-            >
-              花園 たえ
-            </Checkbox>
-            <Checkbox
+              onClick={this.checktest}
+              value="花園 たえ"
+            />
+            花園 たえ
+            <p />
+            <input
+              type="checkbox"
               checked={this.state.poppin[3]}
               onChange={this.checkBoxHandler("poppin", 3)}
-            >
-              牛込 りみ
-            </Checkbox>
-            <Checkbox
+              onClick={this.checktest}
+              value="牛込 りみ"
+            />
+            牛込 りみ
+            <p />
+            <input
+              type="checkbox"
               checked={this.state.poppin[4]}
               onChange={this.checkBoxHandler("poppin", 4)}
-            >
-              山吹 沙綾
-            </Checkbox>
-            <Checkbox
+              onClick={this.checktest}
+              value="山吹 沙綾"
+            />
+            山吹 沙綾
+            <p />
+            <input
+              type="checkbox"
               checked={this.state.poppin[5]}
               onChange={this.checkBoxHandler("poppin", 5)}
-            >
-              市ヶ谷 有咲
-            </Checkbox>
+              onClick={this.checktest}
+              value="市ヶ谷 有咲"
+            />
+            市ヶ谷 有咲
           </Panel.Body>
         </Panel>
-        <Panel>
+        {/* <Panel>
           <Panel.Heading>
             <Panel.Title>
               <Checkbox
@@ -375,7 +410,7 @@ class Member extends React.Component<ICloseModal, IGroupMemberState> {
               奥沢 美咲
             </Checkbox>
           </Panel.Body>
-        </Panel>
+        </Panel> */}
         <button onClick={this.props.closemodal}>close</button>
         <button onClick={this.onclickedConfirm}>確定</button>
       </div>

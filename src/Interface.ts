@@ -52,6 +52,7 @@ export interface IMemberComponentState {
   techniqueId: number;
   visualId: number;
   isMemberDone: boolean;
+  typeContent: string;
 }
 
 export const bandGroup = {
